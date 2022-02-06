@@ -21,6 +21,7 @@ gem 'rexml'
 gem 'devise'
 gem 'devise-i18n'
 gem 'rails_admin', ['>= 3.0.0.beta2', '< 4']
+gem 'cancancan'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
