@@ -1,0 +1,8 @@
+<%= form_with(model: Post.new, local: true) do |form| %>
+
+<div class="post_review">
+    <%= form.label :review %>
+    <%= form.text_field :review %>
+</div>
+<%= form.submit %>
+<% end %>

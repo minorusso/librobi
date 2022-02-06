@@ -1,0 +1,12 @@
+<h1>ブログ一覧</h1>
+
+<table>
+    <tr>
+        <th>レビュー</th>
+    </tr>
+    <% @posts.each do |post| %>
+        <tr>
+            <td><%= post.review %></td>
+        </tr>
+    <% end %>
+</table>
