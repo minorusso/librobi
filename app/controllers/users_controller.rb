@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :profile, :profile_image)
   end
   
 end
