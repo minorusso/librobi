@@ -1,4 +1,19 @@
-<h1>Users#show</h1>
+<% if user_signed_in? && @user == current_user %>
+    <h1>マイページ</h1>
+<% else %>
+    <h1><%= @user.name %>さんのページ</h1>
+<% end %>
 <p>名前 : <%= @user.name %></p>
 <p>メールアドレス : <%= @user.email %></p>
-<%# <p>プロフィール : <%= @user.profile %></p> %>
+
+<h2>これまでのレビュー</h2>
+<table>
+    <tr>
+        <th>レビュー</th>
+    </tr>
+    <% @posts.each do |post| %>
+        <tr>
+            <td><%= post.review %></td>
+        </tr>
+    <% end %>
+</table>
