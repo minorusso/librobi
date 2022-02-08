@@ -1,11 +1,13 @@
-<h1>ブログ一覧</h1>
+<h1>レビュー一覧</h1>
 
 <table>
     <tr>
+        <th>ユーザー</th>
         <th>レビュー</th>
     </tr>
     <% @posts.each do |post| %>
         <tr>
+            <td><%= post.user.name %></td>
             <td><%= post.review %></td>
         </tr>
     <% end %>

@@ -1,0 +1,26 @@
+<% if user_signed_in? && @user == current_user %>
+    <h1>マイページ</h1>
+<% else %>
+    <h1><%= @user.name %>さんのページ</h1><br>
+<% end %>
+
+<% if user_signed_in? && @user == current_user %>
+    <%= link_to "プロフィール編集", edit_user_path(@user) %><br>
+<% end %>
+
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %><br>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<h2>これまでのレビュー</h2>
+<table>
+    <tr>
+        <th>レビュー</th>
+    </tr>
+    <% @posts.each do |post| %>
+        <tr>
+            <td><%= post.review %></td>
+        </tr>
+    <% end %>
+</table>
