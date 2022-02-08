@@ -3,6 +3,11 @@
 <% else %>
     <h1><%= @user.name %>さんのページ</h1>
 <% end %>
+
+<% if user_signed_in? && @user == current_user %>
+    <%= link_to "プロフィール編集", edit_user_path(@user) %>
+<% end %>
+
 <p>名前 : <%= @user.name %></p>
 <p>メールアドレス : <%= @user.email %></p>
 

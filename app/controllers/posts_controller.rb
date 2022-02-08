@@ -14,5 +14,4 @@ class PostsController < ApplicationController
     def post_params
         params.require(:post).permit(:review, :user_id)
     end
-
 end
