@@ -6,12 +6,13 @@ class PostsController < ApplicationController
         @post = Post.new
     end
     def create
-        Post.create(post_params)
+        @post = current_user.posts.build(post_params)
+        @post.save
         redirect_to posts_path
     end
     private
     def post_params
-        params.require(:post).permit(:review)
+        params.require(:post).permit(:review, :user_id)
     end
 
 end
