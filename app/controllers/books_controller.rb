@@ -8,20 +8,21 @@ class BooksController < ApplicationController
     @title = params[:title]
     if @title.present?
       results = RakutenWebService::Books::Book.search({
-        title: @title,
+        title: @title
       })
+
       #@booksにAPIからの取得したJSONデータを格納
       results.each do |result|
         book = Book.new(read(result))
         @books << book
       end
     end
-    #@books内の各データをそれぞれ保存
-    @books.each do |book|
-      unless Book.all.include?(book)
-        book.save
-      end
-    end
+    # #@books内の各データをそれぞれ保存
+    # @books.each do |book|
+    #   unless Book.all.include?(book)
+    #     book.save
+    #   end
+    # end
 
   end
   
