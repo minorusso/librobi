@@ -1,0 +1,22 @@
+<h1>Books#search</h1>
+<div class='content'>
+  <div id="search-box">
+    <%=form_with url: books_search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, placeholder:"タイトル・著者・出版社 etc.", class: "form-control" %>
+        <%= f.submit 'キーワード検索', class: "form-control btn btn-success" %>
+    <% end %>
+    <!--<%= form_tag :books_search, method: :get do  %>
+    <%= label_tag :keyword, 'キーワード検索' %>
+    <%= text_field_tag 'keyword', params[:keyword] %>
+    <%= submit_tag "検索" %>
+    <% end %>-->
+
+  </div>
+  <h2>検索結果</h2>
+  <div id='book_list'>
+    <% if @books.present? %>
+    <%= render 'books/book_list' %>
+    <% end %>
+  </div>
+</div>
+
