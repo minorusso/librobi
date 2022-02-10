@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
   def search
+    # render :layout => nil
+
     # if params[:keyword]
     #   @books = RakutenWebService::Books::Book.search(title:params[:keyword])
     # end

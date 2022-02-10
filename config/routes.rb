@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   resources :posts
   root 'posts#index'
+  # root to: 'books#search'
   get 'books/search', to: "books#search"
   # get 'books/search'
   if Rails.env.development?
