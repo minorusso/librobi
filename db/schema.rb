@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_022837) do
+ActiveRecord::Schema.define(version: 2022_02_10_052512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_022837) do
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "item_caption"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -29,6 +30,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_022837) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_posts_on_book_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -62,6 +65,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_022837) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "posts", "books", primary_key: "isbn"
   add_foreign_key "posts", "users"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
