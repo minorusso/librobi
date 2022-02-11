@@ -28,9 +28,9 @@
           <%= text_field_tag :title, @title, placeholder:"タイトル・著者・出版社 etc.", class: "form-control" %>
           <%= button_tag "検索", class: "form-control btn btn-success" %>
         <% end %>
-        <% if @books.present? %>
-          <%= render 'books/book_list' %>
-        <% end %>
+        <%# if @books.present? %>
+          <%#= render books_path %>
+        <%# end %>
       </div>
     <% else %>
       <h2 class="btn btn-primary mr-2"><%= link_to "新規登録", new_user_registration_path %></h2>

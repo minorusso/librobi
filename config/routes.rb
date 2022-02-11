@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   resources :posts
   root 'posts#index'
   # root to: 'books#search'
-  get 'books/search', to: "books#search"
+  get 'books/search', to: 'books#search'
+  # get 'books/create'
   # get 'books/search'
+  post 'books/search', to: 'books#create'
+
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

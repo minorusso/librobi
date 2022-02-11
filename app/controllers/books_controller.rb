@@ -10,7 +10,8 @@ class BooksController < ApplicationController
     @title = params[:title]
     if @title.present?
       results = RakutenWebService::Books::Book.search({
-        title: @title
+        title: @title,
+        hits: 20,
       })
 
       #@booksにAPIからの取得したJSONデータを格納
@@ -19,13 +20,23 @@ class BooksController < ApplicationController
         @books << book
       end
     end
+
     # #@books内の各データをそれぞれ保存
     # @books.each do |book|
     #   unless Book.all.include?(book)
     #     book.save
     #   end
     # end
+  end
 
+  def create
+    @book = Book.find_or_initialize_by(isbn: params[:isbn])
+
+    unless @book.persisted?
+      results = RakutenWebService::Books::Book.search(isbn: @book.isbn)
+      @book = Book.new(read(results.first))
+      @book.save
+    end
   end
   
   private
