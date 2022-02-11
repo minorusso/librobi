@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     end
     def new
         @post = Post.new
+        @book = Book.find_by(isbn: params[:isbn])
     end
     def create
         @post = current_user.posts.build(post_params)

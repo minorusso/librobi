@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # root to: 'books#search'
   get 'books/search'
   post 'books/search', to: 'books#create'
+  get 'books/show'
 
 
   if Rails.env.development?

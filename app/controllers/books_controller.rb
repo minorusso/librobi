@@ -31,12 +31,17 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.find_or_initialize_by(isbn: params[:isbn])
-
     unless @book.persisted?
       results = RakutenWebService::Books::Book.search(isbn: @book.isbn)
       @book = Book.new(read(results.first))
       @book.save
     end
+    render :show
+  end
+
+  def show
+      @book = Book.find(params[:isbn])
+      @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
   
   private
