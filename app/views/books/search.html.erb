@@ -6,14 +6,14 @@
             <div class="list">
                 <%= link_to (image_tag(book.image_url)), book.url %><br>
                 <%#= link_to "レビュー投稿", new_post_path(book.isbn) %><br> %>
-                <%= link_to "作品詳細へ", books_show_path(book.isbn) %><br> %>
+                <%# <%= link_to "作品詳細へ", books_show_path(book.isbn) %><br> %> %>
                 <%= form_tag(books_search_path) do %>
                     <%= hidden_field_tag :isbn, book.isbn %>
                     <%= submit_tag '詳細' %>
                 <% end %>
                 <%= book.title %><br>
                 <%= book.author %><br>  
-                <%= book.isbn %><br> 
+                <%= book.isbn %><br> <br>
             </div>
         <% end %>
     <% end %>

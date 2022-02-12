@@ -1,9 +1,14 @@
-<%= form_with(model: Post.new, local: true) do |form| %>
+<h1>レビュー編集</h1>
+<%= link_to (image_tag(@selected_book.image_url)), @selected_book.url %><br>
+<%= @selected_book.title %><br>
+<%= @selected_book.author %><br>
+<%= @selected_book.item_caption %><br>   
+<%= @selected_book.isbn %><br> 
 
+<%= form_with(model: Post.new, local: true) do |form| %>
 <div class="post_review">
     <%= form.label :review %>
     <%= form.text_field :review %>
 </div>
 <%= form.submit %>
 <% end %>
-<%# <%= @book.title %> %>

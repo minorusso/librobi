@@ -39,10 +39,9 @@ class BooksController < ApplicationController
     render :show
   end
 
-  def show
-      @book = Book.find(params[:isbn])
-      @favorite = current_user.favorites.find_by(picture_id: @picture.id)
-  end
+
+
+
   
   private
   #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッドを設定していきます。
