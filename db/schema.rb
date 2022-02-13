@@ -30,8 +30,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_052512) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.bigint "book_id"
-    t.index ["book_id"], name: "index_posts_on_book_id"
+    t.bigint "book_isbn"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -65,7 +64,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_052512) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "posts", "books", primary_key: "isbn"
+  add_foreign_key "posts", "books", column: "book_isbn", primary_key: "isbn"
   add_foreign_key "posts", "users"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
