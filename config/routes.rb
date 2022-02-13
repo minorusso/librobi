@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   end
   
   resources :posts
-  root 'posts#index'
-  # root to: 'books#search'
+  # root 'posts#index'
+  root to: 'books#search'
   get 'books/search'
   post 'books/search', to: 'books#create'
   get 'books/show'

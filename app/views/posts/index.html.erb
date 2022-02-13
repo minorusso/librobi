@@ -4,11 +4,28 @@
     <tr>
         <th>ユーザー</th>
         <th>レビュー</th>
+        <th>書籍情報</th>
+        <th>タイトル</th>        
     </tr>
+    <%
+=begin
+%>
+    <tr>
+        <td><%= @post.user.name %></td>
+        <td><%= @post.review %></td>
+        <td><%= @post.isbn %></td>
+        <%# <td><%= @post.book.title %></td> %>
+    </tr>
+    <%　
+=end 
+%>
+
     <% @posts.each do |post| %>
         <tr>
             <td><%= post.user.name %></td>
             <td><%= post.review %></td>
+            <td><%= post.isbn %></td>
         </tr>
     <% end %>
+
 </table>
