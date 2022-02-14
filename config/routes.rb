@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   end
   
-  resources :posts
+  resources :posts do
+    resources :comments, only:[:create, :destroy]
+  end
   # root 'posts#index'
   root to: 'books#search'
   get 'books/search'
