@@ -16,6 +16,17 @@ class PostsController < ApplicationController
         # binding.irb
         redirect_to posts_path
     end
+    def edit
+        @post = Post.find(params[:id])
+        @book = Book.find_by(id: params[:id])
+    end
+    def show
+
+    end
+    def destroy
+
+    end
+
     private
     def post_params
         params.require(:post).permit(:review, :user_id, :book_id)

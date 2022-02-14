@@ -29,6 +29,7 @@
             <td><%= attachment_image_tag post.user, :profile_image, :fill, 60, 60 %></td>
             <td><%= post.user.name %></td>
             <td><%= post.review %></td>
+            <td><%= link_to "編集", edit_post_path(post) %></td>
         </tr>
     <% end %>
 </table>
