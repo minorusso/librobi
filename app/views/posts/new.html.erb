@@ -7,7 +7,7 @@
 
 <%= form_with(model: @post, local: true) do |form| %>
 <div class="post_review">
-    <%= form.hidden_field :isbn, bigint:@book.isbn %>
+    <%= form.hidden_field :book_id, :value => @book.id %>
     <%= form.label :review %>
     <%= form.text_field :review %>
 </div>

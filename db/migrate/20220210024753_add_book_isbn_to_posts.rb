@@ -1,6 +1,6 @@
 class AddBookIsbnToPosts < ActiveRecord::Migration[6.0]
   def change
-    add_column :posts, :isbn, :bigint, index: true
+    add_reference :posts, :book, foreign_key: true
   end
 end
 

@@ -2,10 +2,11 @@
 
 <table>
     <tr>
+        <th>書籍画像</th> 
+        <th>タイトル</th>
+        <th>アイコン</th>
         <th>ユーザー</th>
-        <th>レビュー</th>
-        <th>書籍情報</th>
-        <th>タイトル</th>        
+        <th>レビュー</th>      
     </tr>
     <%
 =begin
@@ -23,10 +24,11 @@
 
     <% @posts.each do |post| %>
         <tr>
+            <td><%= link_to (image_tag(post.book.image_url)), post.book.url %></td>
+            <td><%= post.book.title %></td>
+            <td><%= attachment_image_tag post.user, :profile_image, :fill, 60, 60 %></td>
             <td><%= post.user.name %></td>
             <td><%= post.review %></td>
-            <td><%= post.isbn %></td>
-            <td><%= post.book.title %></td>
         </tr>
     <% end %>
 </table>

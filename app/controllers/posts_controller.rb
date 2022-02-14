@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     end
     def new
         @post = Post.new
-        @book = Book.find_by(isbn: params[:isbn])
+        @book = Book.find_by(id: params[:id])
     end
     def create
         @post = current_user.posts.build(post_params)
@@ -18,6 +18,6 @@ class PostsController < ApplicationController
     end
     private
     def post_params
-        params.require(:post).permit(:review, :user_id, :isbn)
+        params.require(:post).permit(:review, :user_id, :book_id)
     end
 end
