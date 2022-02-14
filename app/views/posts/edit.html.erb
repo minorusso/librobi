@@ -13,3 +13,6 @@
 </div>
 <%= form.submit %>
 <% end %>
+<%= link_to "一覧", posts_path %>
+<%= link_to "詳細", post_path(id: @post.id, book_id: @post.book.id ) %>
+<%= link_to '削除する', post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？" %><br>
