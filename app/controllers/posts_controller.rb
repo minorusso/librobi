@@ -28,7 +28,8 @@ class PostsController < ApplicationController
     def show
         @post = Post.find(params[:id])
         @book = Book.find_by(id: params[:book_id])
-        @comment = Comment.new 
+        # @comment = Comment.new 
+        @comment = @post.comments.build 
         @comments = @post.comments
     end
     def destroy
