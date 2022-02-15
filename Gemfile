@@ -26,6 +26,8 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'rakuten_web_service'
 gem 'dotenv-rails'
+gem 'kaminari','~> 1.2.1'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

@@ -1,38 +1,24 @@
-<h1>レビュー一覧</h1>
-
-<table>
-    <tr>
-        <th>書籍画像</th> 
-        <th>タイトル</th>
-        <th>アイコン</th>
-        <th>ユーザー</th>
-        <th>レビュー</th> 
-        <th>コメント数</th>      
-    </tr>
-    <%
-=begin
-%>
-    <tr>
-        <td><%= @post.user.name %></td>
-        <td><%= @post.review %></td>
-        <td><%= @post.isbn %></td>
-        <%# <td><%= @post.book.title %></td> %>
-    </tr>
-    <%　
-=end 
-%>
-
-
-    <% @posts.each do |post| %>
-        <tr>
-            <td><%= link_to (image_tag(post.book.image_url)), post.book.url %></td>
-            <td><%= post.book.title %></td>
-            <td><%= attachment_image_tag post.user, :profile_image, :fill, 60, 60 %></td>
-            <td><%= post.user.name %></td>
-            <td><%= post.review %></td>
-            <td><%= "#{post.comments.count} コメント" %></td>
-            <td><%= link_to "編集", edit_post_path(id: post.id, book_id: post.book.id ) %></td>
-            <td><%= link_to "詳細", post_path(id: post.id, book_id: post.book.id ) %></td>
-        </tr>
-    <% end %>
-</table>
+<div class="cover-index">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="font-weight-normal mt-5 mb-5">投稿一覧</h1>
+        </div>
+        <div class="row justify-content-left">
+            <% @posts.each do |post| %>
+            <div class="one-post">
+                <td><%= link_to (image_tag(post.book.image_url)), post.book.url %></td>
+                <td><%= post.book.title %></td><br>
+                <td><%= attachment_image_tag post.user, :profile_image, :fill, 60, 60 %></td>
+                <td><%= post.user.name %></td>
+                <th>レビュー</th> 
+                <td><%= post.review %></td><br>
+                <th>コメント数</th>
+                <td><%= "#{post.comments.count} コメント" %></td>
+                <td><%= link_to "編集", edit_post_path(id: post.id, book_id: post.book.id ) %></td>
+                <td><%= link_to "詳細", post_path(id: post.id, book_id: post.book.id ) %></td>
+            </div>
+            <% end %>
+        </div>
+        <%= paginate @posts %>
+    </div>
+</div>
