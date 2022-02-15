@@ -11,13 +11,13 @@ Rails.application.routes.draw do
   end
   
   resources :posts do
-    resources :comments, only:[:create, :destroy]
+    resources :comments
     resource :favorites, only: [:create, :destroy]
   end
   # root 'posts#index'
   root to: 'books#search'
   get 'books/search'
-  post 'books/search', to: 'books#create'
+  # post 'books/search', to: 'books#create'
   get 'books/show'
   get 'books/edit'
 

@@ -7,10 +7,16 @@
                 <%= link_to (image_tag(book.image_url)), book.url %><br>
                 <%#= link_to "レビュー投稿", new_post_path(book.isbn) %><br> %>
                 <%# <%= link_to "作品詳細へ", books_show_path(book.isbn) %><br> %> %>
+                <%
+=begin %>
                 <%= form_tag(books_search_path) do %>
                     <%= hidden_field_tag :isbn, book.isbn %>
                     <%= submit_tag '詳細' %>
                 <% end %>
+                <%
+=end %>
+
+                <%= link_to "詳細へ", books_show_path(isbn: book.isbn) %><br>
                 <%= book.title %><br>
                 <%= book.author %><br>  
                 <%= book.isbn %><br> <br>

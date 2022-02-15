@@ -9,38 +9,19 @@
 <%= link_to "一覧", posts_path %>
 <%= link_to "編集", edit_post_path(id: @post.id, book_id: @post.book.id ) %>
 
-
-
-    <% if @post.favorited_by?(current_user) %>
-        <%= link_to post_favorites_path(post_id: @post.id, book_id: @post.book.id), method: :delete, class: "favorite_btn" do %>
-        ♥<%= @post.favorites.count %> いいね
-        <% end %>
-    <% else %>
-        <%= link_to post_favorites_path(post_id: @post.id, book_id: @post.book.id), method: :post, class: "favorite_btn" do %>
-        ♡<%= @post.favorites.count %> いいね
-        <% end %>
-    <% end %>
-
-
-<div class="comments ml-5 mt-5">
-    <%= form_with(model:[@post, @comment], local: true) do |f| %>
-    <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
-    <%= f.submit "送信する", class: "btn btn-success mb-4" %>
-    <% end %>
-
-    <p>コメント件数:<%= @comments.count %></p>
-        <% @comments.each do |comment| %>
-        <div class="comments-index mb-2">
-        <%= comment.user.name %>
-        <%= comment.created_at.strftime('%Y/%m/%d') %><br>
-            <div class="d-flex">
-            <%= comment.comment %>
-            <% if comment.user == current_user %>
-                <div class="comment-delete">
-                    <%= link_to "削除", post_comment_path(id: comment.id, post_id: comment.post.id, book_id: comment.post.book_id), method: :delete, class: "btn-sm btn-danger" %>
-                </div>
-            </div>
-        </div>
-        <% end %>
-        <% end %>
+<div id="favorite_btn_<%= @post.id %>">
+    <%= render 'favorites/favorite', post: @post %>
 </div>
+
+
+
+
+<p>コメント一覧</p>
+<!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
+<div id="comments_area">
+<!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+<%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
+</div>
+
+<!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+<%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
