@@ -36,9 +36,15 @@ class CommentsController < ApplicationController
         end
     end
     def destroy
-        Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
+        @comment = Comment.find(params[:id])
+        @comment.destroy
+        respond_to do |format|
+            flash.now[:notice] = 'コメントが削除されました'
+            format.js { render :index }
+        end
+        # Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
         # link_to  削除でbook_idも送る必要がある
-        redirect_to post_path(id: params[:post_id], book_id: params[:book_id] )
+        # redirect_to post_path(id: params[:post_id], book_id: params[:book_id] )
     end
     
     private
