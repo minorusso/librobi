@@ -11,7 +11,9 @@ class PostsController < ApplicationController
         unless @book.persisted?
             results = RakutenWebService::Books::Book.search(isbn: @book.isbn)
             @book = Book.new(read(results.first))
+
             @book.save
+            # 
         end
     end
 
@@ -19,10 +21,7 @@ class PostsController < ApplicationController
         # results = RakutenWebService::Books::Book.search(post_params)
         # @book = Book.new(read(results.first))
         @post = current_user.posts.build(post_params)
-        # binding.irb
-        # @book.save
         @post.save
-        # binding.irb
         redirect_to posts_path
     end
     def edit

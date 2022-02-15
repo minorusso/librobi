@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
         # redirect_to post_path(id: post.id, book_id: post.book.id )
         respond_to do |format|
             if @comment.save
-            format.html { redirect_to post_path(id: @post.id, book_id: @post.book.id ) }
+            format.js { redirect_to post_path(id: @post.id, book_id: @post.book.id ) }
             else
-            format.html { redirect_to post_path(id: @post.id, book_id: @post.book.id ), notice: '投稿できませんでした...' }
+            format.js { redirect_to post_path(id: @post.id, book_id: @post.book.id ), notice: '投稿できませんでした...' }
             end
         end
     end
