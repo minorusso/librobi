@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
     def index
-        # @post = Post.first
-        @posts = Post.all
+        @posts = Post.page(params[:page]).reverse_order
     end
     def new
         @post = Post.new
