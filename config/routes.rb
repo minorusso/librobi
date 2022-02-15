@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # root 'posts#index'
   root to: 'books#search'
   get 'books/search'
-  post 'books/search', to: 'books#create'
+  # post 'books/search', to: 'books#create'
   get 'books/show'
   get 'books/edit'
 

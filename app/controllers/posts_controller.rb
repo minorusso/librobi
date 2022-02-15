@@ -5,13 +5,22 @@ class PostsController < ApplicationController
     end
     def new
         @post = Post.new
-        @book = Book.find_by(id: params[:id])
+        # isbnが一致しなければBook.new
+        @book = Book.find_or_initialize_by(isbn: params[:isbn])
+        # Bookがない時（isbnが一致するBookがあったときは）
+        unless @book.persisted?
+            results = RakutenWebService::Books::Book.search(isbn: @book.isbn)
+            @book = Book.new(read(results.first))
+            @book.save
+        end
     end
+
     def create
+        # results = RakutenWebService::Books::Book.search(post_params)
+        # @book = Book.new(read(results.first))
         @post = current_user.posts.build(post_params)
-        # @post.user_id = current_user.id
-        # @book = Book.find_by(isbn: params[:book_isbn])
-        # @post.book_isbn = @book.isbn
+        # binding.irb
+        # @book.save
         @post.save
         # binding.irb
         redirect_to posts_path
@@ -41,5 +50,23 @@ class PostsController < ApplicationController
     private
     def post_params
         params.require(:post).permit(:review, :user_id, :book_id)
+    end
+
+  #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッドを設定していきます。
+    def read(result)
+        title = result["title"]
+        author = result["author"]
+        url = result["itemUrl"]
+        isbn = result["isbn"]
+        image_url = result["mediumImageUrl"]
+        item_caption = result["itemCaption"]
+        {
+        title: title,
+        author: author,
+        url: url,
+        isbn: isbn,
+        image_url: image_url,
+        item_caption: item_caption
+        }
     end
 end
