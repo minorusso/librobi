@@ -14,7 +14,6 @@
                 <td><%= post.review %></td><br>
                 <th>コメント数</th>
                 <td><%= "#{post.comments.count} コメント" %></td>
-                <td><%= link_to "編集", edit_post_path(id: post.id, book_id: post.book.id ) %></td>
                 <td><%= link_to "詳細", post_path(id: post.id, book_id: post.book.id ) %></td>
             </div>
             <% end %>

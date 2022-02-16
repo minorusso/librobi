@@ -9,13 +9,13 @@ Rails.application.routes.draw do
     end
     resource :relationships, only: [:create, :destroy]
   end
-  
+
+  root to: 'posts#index'
   resources :posts do
     resources :comments
     resource :favorites, only: [:create, :destroy]
   end
 
-  root to: 'books#rank'
   resources :books, only: [:show], param: :isbn do
     collection do
       get 'search'
