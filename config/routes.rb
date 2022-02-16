@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         registrations: 'users/registrations'
   }
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:index, :show, :edit, :update] do
     member do
       get :follows, :followers
     end
@@ -14,12 +14,19 @@ Rails.application.routes.draw do
     resources :comments
     resource :favorites, only: [:create, :destroy]
   end
-  # root 'posts#index'
-  root to: 'books#search'
-  get 'books/search'
-  # post 'books/search', to: 'books#create'
-  get 'books/show'
-  get 'books/edit'
+
+  root to: 'books#rank'
+  resources :books, only: [:show], param: :isbn do
+    collection do
+      get 'search'
+      get 'rank'
+    end
+  end
+  # get 'books/search'
+  # get 'books/rank'
+  # # post 'books/search', to: 'books#create'
+  # get 'books/show'
+  # get 'books/edit'
 
 
   if Rails.env.development?
