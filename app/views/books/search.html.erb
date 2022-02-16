@@ -16,7 +16,7 @@
                 <%
 =end %>
 
-                <%= link_to "詳細へ", books_show_path(isbn: book.isbn) %><br>
+                <%= link_to "詳細へ", book_path(isbn: book.isbn) %><br>
                 <%= book.title %><br>
                 <%= book.author %><br>  
                 <%= book.isbn %><br> <br>

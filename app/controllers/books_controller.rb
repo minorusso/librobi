@@ -1,4 +1,22 @@
 class BooksController < ApplicationController
+  
+  def rank
+    @books = []
+      results = RakutenWebService::Books::Book.search({
+        booksGenreId: "001",
+        # 漫画
+        # booksGenreId: "001001",
+        sort: "sales",
+        hits: 10,
+        outOfStockFlagoutOfStockFlag: 1
+      })
+      #@booksにAPIからの取得したJSONデータを格納
+      results.each do |result|
+        book = Book.new(read(result))
+        @books << book
+      end
+  end
+  
   def search
     # render :layout => nil
 
@@ -12,6 +30,7 @@ class BooksController < ApplicationController
       results = RakutenWebService::Books::Book.search({
         title: @title,
         hits: 20,
+        outOfStockFlagoutOfStockFlag: 1
       })
 
       #@booksにAPIからの取得したJSONデータを格納
