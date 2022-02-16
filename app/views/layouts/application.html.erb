@@ -12,8 +12,8 @@
   <body>
     <header>  
       <% if user_signed_in? %>
-        <div><%= link_to "トップ", root_path, class: "text-black" %></div>
-        <div><%= link_to "投稿一覧", posts_path, class: "text-black" %></div>
+        <div><%= link_to "タイムライン", posts_path, class: "text-black" %></div>
+        <div><%= link_to "トレンド", rank_books_path, class: "text-black" %></div>
         <div><%= link_to "ユーザー", users_path, class: "text-black" %></div>
         <div><%= link_to "マイページ", user_path(current_user.id), class: "text-black" %></div>
         <div><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-black" %></div>
