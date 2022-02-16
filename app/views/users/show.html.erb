@@ -1,41 +1,54 @@
-<% if user_signed_in? && @user == current_user %>
-    <h1>マイページ</h1>
-<% else %>
-    <h1><%= @user.name %>さんのページ</h1><br>
-<% end %>
-
-<% if user_signed_in? && @user == current_user %>
-    <%= link_to "プロフィール編集", edit_user_path(@user) %><br>
-<% end %>
-
-<% if current_user != @user %>
-    <% if current_user.following?(@user) %>
-    <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn-sm btn-danger" %>
-    <% else %>
-    <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class:"btn-sm btn-success" %>
-    <% end %>
-<% end %>
-<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %><br>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
-<div class="d-flex">
-    <%= link_to follows_user_path(@user) do %>
-    <h6>フォロー<%= @following_users.count %></h6>
-    <% end %>&nbsp;&nbsp;
-    <%= link_to followers_user_path(@user) do %>
-    <h6>フォロワー<%= @follower_users.count %></h6>
-    <% end %>
+<div class="cover-user-show">
+    <div class="container">
+        <div class="row justify-content-center">
+            <% if user_signed_in? && @user == current_user %>
+                <h1 class="font-weight-normal mt-5 mb-5">マイページ</h1>
+            <% else %>
+                <h1 class="font-weight-normal mt-5 mb-5"><%= @user.name %>さんのページ</h1>
+            <% end %>
+        </div>
+        <div class="row justify-content-center">
+            <% if user_signed_in? && @user == current_user %>
+                <%= link_to "プロフィール編集", edit_user_path(@user) %><br>
+            <% end %>
+        </div>
+        <div class="row justify-content-center">
+            <% if current_user != @user %>
+                <% if current_user.following?(@user) %>
+                <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn-sm btn-danger" %>
+                <% else %>
+                <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class:"btn-sm btn-success" %>
+                <% end %>
+            <% end %>
+        </div>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %><br>
+        <p>名前 : <%= @user.name %></p>
+        <p>メールアドレス : <%= @user.email %></p>
+        <p>プロフィール : <%= @user.profile %></p>
+        <div class="d-flex">
+            <%= link_to follows_user_path(@user) do %>
+            <h6>フォロー<%= @following_users.count %></h6>
+            <% end %>&nbsp;&nbsp;
+            <%= link_to followers_user_path(@user) do %>
+            <h6>フォロワー<%= @follower_users.count %></h6>
+            <% end %>
+        </div>
+        <h2 class="font-weight-normal mt-5 mb-5">これまでのレビュー</h2>
+        <div class="row justify-content-center">
+            <% @posts.each do |post| %>
+                <div class="one-post">
+                    <td><%= link_to (image_tag(post.book.image_url)), post.book.url %></td>
+                    <td><%= post.book.title %></td><br>
+                    <td><%= attachment_image_tag post.user, :profile_image, :fill, 30, 30 %></td>
+                    <td><%= post.user.name %></td>
+                    <th>レビュー</th> 
+                    <td><%= post.review %></td><br>
+                    <td><%= "#{post.comments.count} コメント" %></td>
+                    <td><%= link_to "編集", edit_post_path(id: post.id, book_id: post.book.id ) %></td>
+                    <td><%= link_to "詳細", post_path(id: post.id, book_id: post.book.id ) %></td>
+                </div>
+            <% end %>
+        </div>  
+        <%= paginate @posts %>     
+    </div>
 </div>
-
-<h2>これまでのレビュー</h2>
-<table>
-    <tr>
-        <th>レビュー</th>
-    </tr>
-    <% @posts.each do |post| %>
-        <tr>
-            <td><%= post.review %></td>
-        </tr>
-    <% end %>
-</table>
