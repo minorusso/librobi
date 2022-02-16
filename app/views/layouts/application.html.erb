@@ -10,17 +10,25 @@
   </head>
 
   <body>
-    <header>  
-      <% if user_signed_in? %>
-        <div><%= link_to "タイムライン", posts_path, class: "text-black" %></div>
-        <div><%= link_to "トレンド", rank_books_path, class: "text-black" %></div>
-        <div><%= link_to "ユーザー", users_path, class: "text-black" %></div>
-        <div><%= link_to "マイページ", user_path(current_user.id), class: "text-black" %></div>
-        <div><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-black" %></div>
-      <% else %>
-        <div><%= link_to "新規登録", new_user_registration_path, class: "text-black" %></div>
-        <div><%= link_to "ログイン", new_user_session_path, class: "text-black" %></div>
-      <% end %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner"> 
+        <div class="container">
+          <nav>
+          <ul class="nav pull-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "タイムライン", posts_path, class: "text-black" %></li>
+            <li><%= link_to "トレンド", rank_books_path, class: "text-black" %></li>
+            <li><%= link_to "ユーザー", users_path, class: "text-black" %></li>
+            <li><%= link_to "マイページ", user_path(current_user.id), class: "text-black" %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-black" %></li>
+          <% else %>
+            <li><%= link_to "新規登録", new_user_registration_path, class: "text-black" %></li>
+            <li><%= link_to "ログイン", new_user_session_path, class: "text-black" %></li>
+          <% end %>
+          </ul>
+          </nav>
+        </div>
+      </div>
     </header> 
     <div id="notices"> 
       <% if notice %>
@@ -40,5 +48,8 @@
     </div>
 
     <%= yield %>
+    <footer>
+      <p>Librobi ©︎2022 Yasuda Inc.</p>
+    </footer>
   </body>
 </html>

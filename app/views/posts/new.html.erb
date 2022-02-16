@@ -1,15 +1,23 @@
-<h1>Posts#レビュー作成</h1>
-<%= link_to (image_tag(@book.image_url)), @book.url %><br>
-<%= @book.title %><br>
-<%= @book.author %><br>
-<%= @book.item_caption %><br>   
-<%= @book.isbn %><br> 
-
-<%= form_with(model: @post, local: true) do |form| %>
-<div class="post_review">
-    <%= form.hidden_field :book_id, :value => @book.id %>
-    <%= form.label :review %>
-    <%= form.text_field :review %>
-</div>
-<%= form.submit %>
-<% end %>
+<div class="cover-new">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="font-weight-normal mt-3">レビュー投稿</h1>
+        </div>
+        <div class="row justify-content-center">
+                <%= link_to (image_tag(@book.image_url)), @book.url %><br>
+                <%= @book.title %><br>
+                <%= @book.author %><br>
+                <%= @book.item_caption %><br>   
+        </div>
+        <div class="row justify-content-center">      
+            <%= form_with(model: @post, local: true) do |form| %>
+            <div class="form-group">
+                <label class="form-label">レビュー</label>
+                <%= form.hidden_field :book_id, :value => @book.id %>
+                <%= form.text_field :review, class: "form-control" %>
+            </div>
+                <%= form.submit '投稿する', class: "btn btn-success" %>
+            <% end %>
+        </div>
+    </div>  
+</div>  

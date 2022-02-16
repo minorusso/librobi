@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   devise_for :users, controllers: {
         registrations: 'users/registrations'
   }
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
   resources :users, only: [:index, :show, :edit, :update] do
     member do
       get :follows, :followers
@@ -11,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'posts#index'
+
   resources :posts do
     resources :comments
     resource :favorites, only: [:create, :destroy]
@@ -22,16 +28,9 @@ Rails.application.routes.draw do
       get 'rank'
     end
   end
-  # get 'books/search'
-  # get 'books/rank'
-  # # post 'books/search', to: 'books#create'
-  # get 'books/show'
-  # get 'books/edit'
-
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
-  
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
