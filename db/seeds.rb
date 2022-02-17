@@ -1,29 +1,29 @@
 #Users
-10.times do |n|
+15.times do |n|
     name = Faker::Games::Pokemon.name
     email = Faker::Internet.email
     password = "password"
     User.create!(name: name,
                 email: email,
                 password: password,
+                admin: false
                 )
 end
 
-#Admin Users
+#Admin User
 2.times do |n|
     name = "管理者#{n + 1}"
-    email = "admin@example.com"
-    password = "password"
-    admin = true
+    email = "#{n + 1}admin@example.com"
+    password = "admin#{n + 1}"
     User.create!(name: name,
                 email: email,
                 password: password,
-                admin: admin,
+                admin: true
                 )
 end
 
 #Books
-10.times do |n|
+15.times do |n|
     title = Faker::Book.title
     author = Faker::Book.author
     isbn = 9784101235288
@@ -35,13 +35,13 @@ end
                 isbn: isbn,
                 url: url,
                 image_url: image_url,
-                item_caption: item_caption,
+                item_caption: item_caption
                 )
 end
 
-#Posts
-10.times do |n|
-    review = "#{n + 1}番目に面白かった"
+# #Posts
+15.times do |n|
+    review = "今月#{n + 1}冊目です。"
     rate = 4.5
     book_id = n + 1
     user_id = n + 1
@@ -51,3 +51,31 @@ end
                 user_id: user_id
                 )
 end
+
+#Comments
+10.times do |n|
+    comment = "#{n + 1}番目に面白かった？"
+    user_id = n + 1
+    post_id = n + 1
+    Comment.create!(comment: comment,
+                user_id: user_id,
+                post_id: post_id
+                )
+end
+
+#Favorites
+10.times do |n|
+    user_id = n + 1
+    post_id = n + 1
+    Favorite.create!(user_id: user_id,
+                post_id: post_id
+                )
+end
+
+#Relationships
+users = User.all
+user  = users.first
+following = users[2..15]
+followers = users[3..10]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
