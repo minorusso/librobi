@@ -10,7 +10,21 @@
                 <td><%= post.book.title %></td><br>
                 <td><%= attachment_image_tag post.user, :profile_image, :fill, 60, 60 %></td>
                 <td><%= post.user.name %></td>
-                <th>レビュー</th> 
+                <th>レビュー</th>
+                <!--星評価-->
+                <div id="star-rate-<%= post.id %>"></div>
+                <script>
+                $('#star-rate-<%= post.id %>').raty({
+                    size: 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= post.rate %>,
+                });
+                </script>  
+                <!--/星評価-->
                 <td><%= post.review %></td><br>
                 <th>コメント数</th>
                 <td><%= "#{post.comments.count} コメント" %></td>
