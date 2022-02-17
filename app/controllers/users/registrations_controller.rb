@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_normal_user, only: %i[update destroy]
+  # before_action :ensure_normal_user, only: %i[update destroy]
   # redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません'
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  def ensure_normal_user
-    if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません'
-    end
-  end
-  # GET /resource/sign_up
+  # def ensure_normal_user
+  #   if resource.email == 'guest@example.com'
+  #     redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません'
+  #   end
+  # end
+  # # GET /resource/sign_up
   # def new
   #   super
   # end
@@ -44,11 +44,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  protected
-  # アカウント編集後、プロフィール画面に移動する
-  def after_update_path_for(resource)
-    user_path(id: current_user.id)
-  end
+  # protected
+  # # アカウント編集後、プロフィール画面に移動する
+  # def after_update_path_for(resource)
+  #   user_path(id: current_user.id)
+  # end
 
 
   # If you have extra params to permit, append them to the sanitizer.

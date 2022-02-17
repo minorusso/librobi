@@ -15,11 +15,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
@@ -39,8 +39,8 @@ class UsersController < ApplicationController
   end
   
   def ensure_normal_user
-    user = User.find(params[:id])
-    if user.name == 'ゲスト'
+    @user = User.find(params[:id])
+    if @user.name == 'ゲスト'
       redirect_to user_session_path, alert: 'ゲストユーザーの更新・削除はできません'
     end
   end
