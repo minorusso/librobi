@@ -15,7 +15,7 @@ class PostsController < ApplicationController
             @book = Book.new(read(results.first))
         end
         @book.save
-        @post = current_user.posts.build(review: params[:review])
+        @post = current_user.posts.build(review: params[:review], rate: params[:rate])
         @post.book_id =  @book.id
         @post.save
         redirect_to posts_path

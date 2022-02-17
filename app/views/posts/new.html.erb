@@ -16,8 +16,27 @@
                 <%= form.hidden_field :isbn, :value => @book.isbn %>
                 <%= form.text_field :review, class: "form-control" %>
             </div>
+            <!-- 評価 -->
+            <div class="form-group row" id="star">
+                <%= form.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+                <%= form.hidden_field :rate, id: :review_star %>
+            </div>
+
+            <!-- 評価javascript -->
+            <script>
+            $('#star').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: '[rate]',
+                half: true,
+            });
+            </script>  
+
                 <%= form.submit '投稿する', class: "btn btn-success" %>
             <% end %>
+
         </div>
     </div>  
 </div>  
