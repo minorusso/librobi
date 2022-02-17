@@ -9,6 +9,19 @@
                 )
 end
 
+#Admin Users
+2.times do |n|
+    name = "管理者#{n + 1}"
+    email = "admin@example.com"
+    password = "password"
+    admin = true
+    User.create!(name: name,
+                email: email,
+                password: password,
+                admin: admin,
+                )
+end
+
 #Books
 10.times do |n|
     title = Faker::Book.title
