@@ -73,9 +73,9 @@ end
 end
 
 #Relationships
-users = User.all
-user  = users.first
-following = users[2..15]
-followers = users[3..10]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+# users = User.all
+# user  = users.first
+# following = users[2..15]
+# followers = users[3..10]
+# following.each { |followed| user.follow(followed) }
+# followers.each { |follower| follower.follow(user) }
