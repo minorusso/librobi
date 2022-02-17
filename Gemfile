@@ -27,6 +27,7 @@ gem "refile-mini_magick"
 gem 'rakuten_web_service'
 gem 'dotenv-rails'
 gem 'kaminari','~> 1.2.1'
+gem 'faker'
 
 
 # Use Redis adapter to run Action Cable in production
@@ -43,7 +44,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'faker'
 end
 
 group :development do
