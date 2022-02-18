@@ -18,7 +18,7 @@
   <div class="body-wrap">
       <header class='header'>
         <ul>
-          <span class="app_tilte">Librobi</span>
+          <span class="app_tilte"><%= link_to root_path do %><img src="/assets/header.png" alt="logo" id="logo"><% end %></span>
           <div class="link-list">
           <% if user_signed_in? %>
             <li><%= link_to "タイムライン", posts_path, class: "text-black" %></li>
@@ -45,18 +45,22 @@
         <p class="alert alert-error"><%= alert %></p>
       <% end %> 
     </div>
+
     <div id="search-box">
-      <% if user_signed_in? %> 
+      <% if user_signed_in? %>
         <%= form_tag(search_books_path, method: :get) do %>
-          <%= text_field_tag :title, @title, placeholder:"タイトルを入力してください。", class: "form-control" %>
-          <%= button_tag "検索", class: "form-control btn btn-success" %>
-        <% end %>
+        <div class="input-group">
+          <%= text_field_tag :title, @title, placeholder:"書籍のタイトルを入力してください。", class: "form-control form-control-lg" %>
+          <span class="input-group-btn">
+            <%= button_tag "検索", class: "form-control form-control-lg btn btn-warning" %>
+          </span>
+        </div>
+        <% end %>  
       <% end %>
     </div>
-
     <%= yield %>
-    <footer>
-      <p>Librobi ©︎2022 Yasuda Inc.</p>
+    <footer class='footer'>
+      <p>Librobi  Create by MY </p>
     </footer>
     </div>
   </body>

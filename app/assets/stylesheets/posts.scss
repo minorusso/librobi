@@ -2,3 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.twitter__container {
+    padding: 0;
+    background: #ffffff;
+    overflow: hidden;
+    //max-width: 400px; ←コメントアウトする
+    margin: 20px auto;
+    font-size: 80%;
+    border: solid 1px #eeeeee;
+}
+
