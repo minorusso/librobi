@@ -14,13 +14,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner"> 
-        <div class="container">
-          <nav>
-          <ul class="nav pull-right">
+  <div class="body-wrap">
+      <header class='header'>
+        <ul>
+          <span class="app_tilte">Librobi</span>
+          <div class="link-list">
           <% if user_signed_in? %>
             <li><%= link_to "タイムライン", posts_path, class: "text-black" %></li>
             <li><%= link_to "トレンド", rank_books_path, class: "text-black" %></li>
@@ -34,11 +33,10 @@
             <li><%= link_to "新規登録", new_user_registration_path, class: "text-black" %></li>
             <li><%= link_to "ログイン", new_user_session_path, class: "text-black" %></li>
           <% end %>
-          </ul>
-          </nav>
-        </div>
-      </div>
-    </header> 
+          </div>
+        </ul>
+      </header>
+
     <div id="notices"> 
       <% if notice %>
         <p class="alert alert-notice"><%= notice %></p>
@@ -60,5 +58,6 @@
     <footer>
       <p>Librobi ©︎2022 Yasuda Inc.</p>
     </footer>
+    </div>
   </body>
 </html>
