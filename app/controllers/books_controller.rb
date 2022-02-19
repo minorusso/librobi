@@ -77,7 +77,7 @@ class BooksController < ApplicationController
     author = result["author"]
     url = result["itemUrl"]
     isbn = result["isbn"]
-    image_url = result["mediumImageUrl"]
+    image_url = result["largeImageUrl"]
     item_caption = result["itemCaption"]
     {
       title: title,
