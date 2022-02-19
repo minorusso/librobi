@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     end
     def update
         post = Post.find(params[:id])
-        post.update(post_params)
+        post.update(review: params[:review], rate: params[:rate])
         redirect_to post_path(id: post.id, book_id: post.book.id )
     end
     def show

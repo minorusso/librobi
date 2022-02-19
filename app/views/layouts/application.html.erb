@@ -14,25 +14,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-
   <body>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner"> 
-        <div class="container">
-          <nav>
-          <ul class="nav pull-right">
+  <div class="body-wrap">
+      <header class='header'>
+        <ul>
+          <span class="app_tilte"><%= link_to root_path do %><img src="/assets/header.png" alt="logo" id="logo"><% end %></span>
+          <div class="link-list">
           <% if user_signed_in? %>
             <li><%= link_to "タイムライン", posts_path, class: "text-black" %></li>
             <li><%= link_to "トレンド", rank_books_path, class: "text-black" %></li>
@@ -46,11 +33,10 @@
             <li><%= link_to "新規登録", new_user_registration_path, class: "text-black" %></li>
             <li><%= link_to "ログイン", new_user_session_path, class: "text-black" %></li>
           <% end %>
-          </ul>
-          </nav>
-        </div>
-      </div>
-    </header> 
+          </div>
+        </ul>
+      </header>
+
     <div id="notices"> 
       <% if notice %>
         <p class="alert alert-notice"><%= notice %></p>
@@ -59,18 +45,23 @@
         <p class="alert alert-error"><%= alert %></p>
       <% end %> 
     </div>
+
     <div id="search-box">
-      <% if user_signed_in? %> 
+      <% if user_signed_in? %>
         <%= form_tag(search_books_path, method: :get) do %>
-          <%= text_field_tag :title, @title, placeholder:"タイトルを入力してください。", class: "form-control" %>
-          <%= button_tag "検索", class: "form-control btn btn-success" %>
-        <% end %>
+        <div class="input-group">
+          <%= text_field_tag :title, @title, placeholder:"書籍のタイトルを入力してください。", class: "form-control form-control-lg" %>
+          <span class="input-group-btn">
+            <%= button_tag "検索", class: "form-control form-control-lg btn btn-warning" %>
+          </span>
+        </div>
+        <% end %>  
       <% end %>
     </div>
-
     <%= yield %>
-    <footer>
-      <p>Librobi ©︎2022 Yasuda Inc.</p>
+    <footer class='footer'>
+      <p>Librobi  Create by MY </p>
     </footer>
+    </div>
   </body>
 </html>

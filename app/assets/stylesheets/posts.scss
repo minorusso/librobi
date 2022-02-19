@@ -1,4 +1,75 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.profile-image {
+  width: 60px;
+  height: 60px;
+}
+.book-image {
+  margin-left: auto;
+  margin-right: 0;
+}
 
+.book-image.img {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+
+.content {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-list {
+  width: 450px;
+  margin-bottom: 50px;
+  max-height: 600px;
+  // margin-right: 40px;
+  border-width : 1px;
+  border-style: solid;
+  border-color:rgba(202, 202, 202, 0.978);
+  border-radius: 30px;
+  padding: 40px;
+}
+
+// .card-list:nth-child(2n) {
+//   margin-right: 0;
+// }
+
+.title {
+  max-height: 100px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 30px 0 0 0;
+}
+
+.review {
+  line-height: 1.6;
+}
+
+
+
+// .f-container {
+//   flex-direction: column; 
+// }
+// .one-post {
+//   border-width : 1px;
+//   border-style: solid;
+//   border-color:rgba(202, 202, 202, 0.978);
+//   border-radius: 30px;
+//   padding: 40px;
+//   margin-bottom: 20px;
+//   flex-direction: row-reverse;
+// }
+// .book-img {
+//   margin:0 0 0 auto;
+// }
