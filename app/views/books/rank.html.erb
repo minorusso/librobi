@@ -1,12 +1,22 @@
-<h1>Books#ランキング</h1>
-<div id='book_list'>
-    <% @books.each do |book| %>
-        <div class="list">
-            <%= link_to (image_tag(book.image_url)), book.url %><br>
-            <%= link_to "詳細へ", book_path(isbn: book.isbn) %><br>
-            <%= book.title %><br>
-            <%= book.author %><br>  
-            <%= book.isbn %><br> <br>
-        </div>
-    <% end %>  
+<div class="row justify-content-center">
+    <h1 class="font-weight-normal mt-5 mb-5">ランキング</h1>
 </div>
+
+<div class="row justify-content-center">
+    <div class="content">
+        <div class="card-wrap">
+            <% if @books.present? %>
+                <% @books.each do |book| %>
+                <div class="card-list">           
+                    <p class="book-image"><%= link_to (image_tag(book.image_url)), book.url %></p>
+                    <p class="book-titler">タイトル：<%= book.title %></p>
+                    <p class="book-author">著者/編集：<%= book.author %></p>
+                    <p class="book-itemCaption">内容紹介：<%= book.item_caption %></p>
+                    <%= link_to "詳細へ", book_path(isbn: book.isbn),  class: "btn btn-success" %><br>
+                </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>
+

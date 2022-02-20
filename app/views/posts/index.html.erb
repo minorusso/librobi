@@ -30,7 +30,7 @@
                         <%= render 'favorites/favorite', post: post %>
                     </div>
                     <td><%= "#{post.comments.count} コメント" %></td>   
-                    <td><%= link_to "詳細", post_path(id: post.id, book_id: post.book.id ) %></td> 
+                    <td><%= link_to "詳細", post_path(id: post.id, book_id: post.book.id ),  class: "btn btn-success" %></td> 
                 </div>
                 <% end %>
             </div>
