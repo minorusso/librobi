@@ -38,8 +38,9 @@ body{
 
 .app_tilte{
   /* font-size: 2rem; */
+  vertical-align: middle;
   color: white;
-  margin: 0 0 0 0px;
+  /* margin: 0 100 0 0px; */
   /* font-weight: bold; */
 }
 
@@ -47,16 +48,18 @@ body{
   width: 100%;
   padding: 0px;
   margin: 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .link-list{
-  float: right;
+  /* float: right; */
 }
 
 .header li{
   list-style:none;
   float: left;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   margin: 10px 5px 0 5px;
 }
 

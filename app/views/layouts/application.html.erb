@@ -17,9 +17,9 @@
   <body>
   <div class="body-wrap">
       <header class='header'>
-        <ul>
-          <span class="app_tilte"><%= link_to root_path do %><img src="/assets/header.png" alt="logo" id="logo"><% end %></span>
           <div class="link-list">
+          <ul>
+          <span class="app_tilte"><%= link_to root_path do %><img src="/assets/header.png" alt="logo" id="logo"><% end %></span>
           <% if user_signed_in? %>
             <li><%= link_to "タイムライン", posts_path, class: "text-black" %></li>
             <li><%= link_to "トレンド", rank_books_path, class: "text-black" %></li>
@@ -33,8 +33,8 @@
             <li><%= link_to "新規登録", new_user_registration_path, class: "text-black" %></li>
             <li><%= link_to "ログイン", new_user_session_path, class: "text-black" %></li>
           <% end %>
+          </ul>
           </div>
-        </ul>
       </header>
 
     <div id="notices"> 
