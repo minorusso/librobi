@@ -1,34 +1,52 @@
-<h1>レビュー編集</h1>
-<%= link_to (image_tag(@book.image_url)), @book.url %><br>
-<%= @book.title %><br>
-<%= @book.author %><br>
-<%= @book.item_caption %><br>   
-<%= @book.isbn %><br> 
 <div class="row justify-content-center">
-<%= form_with(model: @post, local: true) do |form| %>
-    <div class="post_review">
-        <%= form.hidden_field :book_id, :value => @book.id %>
-        <%= form.label :review %>
-        <%= form.text_field :review %>
-    </div>
-    <div class="form-group row" id="star">
-        <%= form.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
-        <%= form.hidden_field :rate, id: :review_star %>
-    </div>
-    <!-- 評価javascript -->
-    <script>
-    $('#star').raty({
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        scoreName: '[rate]',
-        half: true,
-    });
-    </script>  
-    <%= form.submit %>
-<% end %>
+    <h1 class="font-weight-normal mt-5 mb-5">レビュー編集</h1>
 </div>
-<%= link_to "一覧", posts_path %>
-<%= link_to "詳細", post_path(id: @post.id, book_id: @post.book.id ) %>
-<%= link_to '削除する', post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？" %><br>
+
+
+<div class="row justify-content-center">
+    <div class="content">
+        <div class="card-wrap">
+            <div class="card-list">
+                <p class="book-image"><%= link_to (image_tag(@book.image_url)), @book.url %></p>
+                <p class="book-titler">タイトル：<%= @book.title %></p>
+                <p class="book-author">著者/編集：<%= @book.author %></p>
+                <p class="book-itemCaption">内容紹介：<%= @book.item_caption %></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="card-wrap">
+        <div class="card-list">     
+            <%= form_with(url: posts_path , local: true) do |form| %>
+            <!-- 評価 -->
+            <div class="form-group" id="star">
+                <%= form.label :rate,'評価：' %>
+                <%= form.hidden_field :rate, id: :review_star %>
+            </div>
+            <div class="form-group">
+            <label for=" introduction" class="control-label">レビュー：</label>
+                <%= form.hidden_field :isbn, :value => @book.isbn %>
+                <textarea name="review" id="review" cols="45" rows="4"
+                placeholder="レビューを書いてください" class="form-control"></textarea>
+                <!-- 注意書きは以下 -->
+                <p class="help-block">※140文字以内で書いてください</p>
+            </div> 
+            <script>
+            $('#star').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: '[rate]',
+                half: true,
+            });
+            </script>  
+            <%= form.submit "更新する", class: "btn btn-success mb-3" %>
+        <% end %>
+            <%= link_to "詳細に戻る", post_path(id: @post.id, book_id: @post.book.id ), class: "btn btn-dark" %> 
+            <%= link_to '削除する', post_path(id: @post.id, book_id: @post.book.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger mr-3" %>
+        </div> 
+    </div>            
+</div>

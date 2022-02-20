@@ -25,7 +25,6 @@ body{
 .body-wrap{
   position: relative;
   min-height: 100%;
-  padding-bottom: 20px;
 }
 
 .header{
@@ -79,7 +78,7 @@ li a:hover{
 .footer{
   padding: 20px 0px;
   background-color: #2c3e50;
-  margin-top:auto;
+  margin-top:50px;
   /* position: absolute; */
   bottom: 0;
   width: 100%
@@ -128,4 +127,8 @@ li a:hover{
 
 #search-box {
   margin: 10px 50px 10px 50px ;
+}
+.input-group-btn {
+  margin-top: 3px;
+  margin-left: 30px;
 }
