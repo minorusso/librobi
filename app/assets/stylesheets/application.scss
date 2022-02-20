@@ -22,10 +22,10 @@ body{
   height: 100%;
 }
 
-.body-wrap{
-  position: relative;
-  min-height: 100%;
-}
+// .body-wrap{
+//   position: relative;
+//   min-height: 100%;
+// }
 
 .header{
   padding: 0px 0px;
@@ -51,9 +51,9 @@ body{
   justify-content: space-between;
 }
 
-// .link-list{
-//   /* float: right; */
-// }
+// // .link-list{
+// //   /* float: right; */
+// // }
 
 .header li{
   list-style:none;
@@ -71,9 +71,9 @@ li a:hover{
   color: rgb(250, 255, 109);
 }
 
-.app_tilte{
-  text-align: left;
-}
+// .app_tilte{
+//   text-align: left;
+// }
 
 .footer{
   padding: 20px 0px;
@@ -91,15 +91,15 @@ li a:hover{
   font-size: 1.1rem;
 }
 
-.article{
-  width: 100%;
-  margin: 10px 0px 70px 0px;
-}
+// .article{
+//   width: 100%;
+//   margin: 10px 0px 70px 0px;
+// }
 
-.content-area{
-  margin-left: 350px;
-  text-align: center;
-}
+// .content-area{
+//   margin-left: 350px;
+//   text-align: center;
+// }
 
 /* .validations{
   width: 100%;
