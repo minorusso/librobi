@@ -8,7 +8,7 @@
             作品のレビューをチェック・投稿できる機能をベースに「読書記録」や「今後読みたい作品のメモ」
             「作品の感想や情報をシェアして楽しむコミュニケーションツール」としてご利用いただけます。
           </p>
-          <%= button_to 'ゲストログイン（管理者用）', users_guest_sign_in_path, class: "btn btn-warning mb-2" , method: :post %>
+          <%= button_to 'ゲストログイン（管理者用）', users_admin_guest_sign_in_path, class: "btn btn-warning mb-2" , method: :post %>
           <%= button_to 'ゲストログイン（一般ユーザー用）', users_guest_sign_in_path, class: "btn btn-warning" , method: :post %>
         </div>
       </div>
