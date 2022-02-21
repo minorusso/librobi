@@ -10,11 +10,52 @@ RSpec.describe 'タスク管理機能', type: :system do
             fill_in 'user[password]',with: user.password
             click_button 'ログイン'
         end
-        context '書籍を検索した場合' do
-            it '関連したした書籍が表示される' do
+        # context '書籍を検索した場合' do
+        #     it '関連した書籍が表示される' do
+        #         find(".form-control").set("深夜特急")
+        #         click_button '検索'
+        #         expect(page).to have_content '深夜特急'
+        #     end
+        # end
+        # context '詳細へを押したとき' do
+        #     it '書籍情報を表示する' do
+        #         find(".form-control").set("深夜特急")
+        #         click_button '検索'
+        #         click_on '詳細へ', match: :first
+        #         expect(page).to have_content '書籍情報'
+        #     end
+        # end
+        # context 'レビュー作成を押すと' do
+        #     it 'レビュー作成画面が表示される' do
+        #         find(".form-control").set("深夜特急")
+        #         click_button '検索'
+        #         click_on '詳細へ', match: :first
+        #         click_on 'レビューを作成する'
+        #         expect(page).to have_content 'レビュー投稿'
+        #     end
+        # end
+        context '投稿すると' do
+            it '投稿一覧画面へ遷移する' do
                 find(".form-control").set("深夜特急")
                 click_button '検索'
-                expect(page).to have_content '深夜特急'
+                click_on '詳細へ', match: :first
+                click_on 'レビューを作成する'
+                find('#star').find("img[alt='4']").click
+                find("#review").set("面白かったです。")
+                click_on '投稿する'
+                expect(page).to have_content '投稿一覧'
+            end
+        end
+        context '空投稿すると' do
+            it '投稿一覧画面へ遷移する' do
+                find(".form-control").set("深夜特急")
+                click_button '検索'
+                click_on '詳細へ', match: :first
+                click_on 'レビューを作成する'
+                find('#star').find("img[alt='4']").click
+                find("#review").set("")
+                click_on '投稿する'
+                expect(page).to have_content '投稿一覧'
             end
         end
     end
