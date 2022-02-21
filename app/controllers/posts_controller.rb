@@ -17,8 +17,16 @@ class PostsController < ApplicationController
         @book.save
         @post = current_user.posts.build(review: params[:review], rate: params[:rate])
         @post.book_id =  @book.id
-        @post.save
-        redirect_to posts_path
+        post_find = Post.where(book_id: @book.id).where(user_id: current_user.id)
+        post_count = post_find.count
+        if post_count < 1
+            @post.save
+            redirect_to posts_path, notice: "レビューを保存しました"
+        else
+            redirect_to posts_path, notice: "一度レビューしています。編集してください。"
+            # redirect_to edit_post_path(id: post_find.first.id, book_id: @post.book.id), notice: "レビューの投稿は一度までです"
+        end
+
     end
     def edit
         @post = Post.find(params[:id])
