@@ -67,6 +67,7 @@ RSpec.describe 'dvevise/ユーザー機能', type: :system do
             it '管理者画面画面に遷移できる' do
                 click_button 'ゲストログイン（管理者用）'
                 click_on '管理者画面'
+                sleep 2
                 expect(page).to have_content('Admin') 
             end
         end
