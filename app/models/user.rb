@@ -17,6 +17,13 @@ class User < ApplicationRecord
       user.name = "ゲスト"
     end
   end
+  def self.admin_guest
+    find_or_create_by!(email: 'admin_guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "管理者ゲスト"
+      user.admin = "true"
+    end
+  end
   # ユーザーをフォローする
   def follow(user_id)
     follower.create(followed_id: user_id)

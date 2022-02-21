@@ -11,7 +11,7 @@
                     <p class="profile-image"><%= attachment_image_tag post.user, :profile_image, :fill, 60, 60 %></p>
                     <p class="name"><%= post.user.name %></p>
                     <p class="book-image"><%= link_to (image_tag(post.book.image_url)), post.book.url %></p>
-                    <p class="title"><%= post.book.title %></p><br>
+                    <p class="book-title"><%= post.book.title %></p><br>
                     <div id="star-rate-<%= post.id %>"></div>
                     <script>
                     $('#star-rate-<%= post.id %>').raty({
@@ -30,12 +30,11 @@
                         <%= render 'favorites/favorite', post: post %>
                     </div>
                     <td><%= "#{post.comments.count} コメント" %></td>   
-                    <td><%= link_to "詳細", post_path(id: post.id, book_id: post.book.id ) %></td> 
+                    <td><%= link_to "詳細", post_path(id: post.id, book_id: post.book.id ),  class: "btn btn-success" %></td> 
                 </div>
                 <% end %>
             </div>
         </div>
-
         <%= paginate @posts %>
     </div>
 </div>

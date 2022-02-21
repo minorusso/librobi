@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   def rank
     @books = []
       results = RakutenWebService::Books::Book.search({
-        booksGenreId: "001",
+        booksGenreId: "001004",
         # 漫画
         # booksGenreId: "001001",
         sort: "sales",
@@ -18,13 +18,7 @@ class BooksController < ApplicationController
   end
   
   def search
-    # render :layout => nil
-
-    # if params[:keyword]
-    #   @books = RakutenWebService::Books::Book.search(title:params[:keyword])
-    # end
     @books = []
-    ##@titleに入力されたワードを代入
     @title = params[:title]
     if @title.present?
       results = RakutenWebService::Books::Book.search({
@@ -39,13 +33,6 @@ class BooksController < ApplicationController
         @books << book
       end
     end
-
-    # #@books内の各データをそれぞれ保存
-    # @books.each do |book|
-    #   unless Book.all.include?(book)
-    #     book.save
-    #   end
-    # end
   end
 
   # def create

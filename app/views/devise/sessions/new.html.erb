@@ -1,8 +1,17 @@
-<div class="cover align-middle">
+<div class="content">
     <div class="text-center">
-        <p class="sub-title">〜みんなの本棚〜</p>
-        <h1 class="title mb-2">Librobi</h1>
-        <%= button_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-warning" , method: :post %>
+      <div class="box2">
+        <div class="box-inner">
+          <p class="sub-title">〜みんなの本棚〜</p>
+          <h1 class="title mb-2">Librobi</h1>
+          <p class="sub-title">Librobiは、書籍・コミックスの<br/>レビュー共有SNSです。<br/><br/>
+            作品のレビューをチェック・投稿できる機能をベースに「読書記録」や「今後読みたい作品のメモ」
+            「作品の感想や情報をシェアして楽しむコミュニケーションツール」としてご利用いただけます。
+          </p>
+          <%= button_to 'ゲストログイン（管理者用）', users_admin_guest_sign_in_path, class: "btn btn-warning mb-2" , method: :post %>
+          <%= button_to 'ゲストログイン（一般ユーザー用）', users_guest_sign_in_path, class: "btn btn-warning" , method: :post %>
+        </div>
+      </div>
     </div>
   <div class="text-center">
     <div class="box2">
@@ -10,7 +19,7 @@
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <h1>ログイン</h1>
         <div class="box-email">
-          <%= f.label :email, "Eメール" %><br />
+          <%= f.label :email, "Eメール" %><br/>
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
         <div class="box-password">
@@ -18,14 +27,14 @@
             <div class="column-left">
               <%= f.label :password, "パスワード" %>
             </div>
-            <div class="column-right">
+            <%# <div class="column-right">
               <%= link_to "パスワードを忘れた場合", new_user_password_path %>
-            </div>
+            <%# </div>  %>
           </div>
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
         <div class="box-login">
-          <%= f.submit "ログイン" , class: "btn btn-success ml-2" %>
+          <%= f.submit "ログイン" , class: "btn btn-success" %>
           <% if devise_mapping.rememberable? %>
           <div class="remember">
             <%= f.check_box :remember_me %>
