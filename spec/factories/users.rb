@@ -8,8 +8,8 @@ FactoryBot.define do
     end
     factory :user, class: User do
         name { 'ユーザー1' }
-        email{ 'user_1@test.com' }
-        password { '111111' }
+        email{ 'user1@test.com' }
+        password { 'password1' }
         admin {  'false'}
     end
 
