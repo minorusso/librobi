@@ -11,10 +11,10 @@ class CommentsController < ApplicationController
         respond_to do |format|
             if @comment.save
             format.js { redirect_to post_path(id: @post.id, book_id: @post.book.id ) }
-            else @comment.present? == false
-            format.js { redirect_to post_path(id: @post.id, book_id: @post.book.id ), notice: '入力してください' }
+            elsif @comment.comment.present?
+            format.js { redirect_to post_path(id: @post.id, book_id: @post.book.id ), notice: '100文字以内で入力してください' }    
             else
-            format.js { redirect_to post_path(id: @post.id, book_id: @post.book.id ), notice: '0~100文字以内で入力してください' }
+            format.js { redirect_to post_path(id: @post.id, book_id: @post.book.id ), notice: '入力してください' }
             end
         end
     end
