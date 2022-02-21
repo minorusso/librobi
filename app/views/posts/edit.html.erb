@@ -19,7 +19,7 @@
 <div class="row justify-content-center">
     <div class="card-wrap">
         <div class="card-list">     
-            <%= form_with(url: posts_path , local: true) do |form| %>
+            <%= form_with(model: @post, local: true) do |form| %>
             <!-- 評価 -->
             <div class="form-group" id="star">
                 <%= form.label :rate,'評価：' %>

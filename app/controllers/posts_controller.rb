@@ -33,6 +33,7 @@ class PostsController < ApplicationController
         @book = Book.find_by(id: params[:book_id])
     end
     def update
+        binding.irb
         post = Post.find(params[:id])
         post.update(review: params[:review], rate: params[:rate])
         redirect_to post_path(id: post.id, book_id: post.book.id )

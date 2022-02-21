@@ -21,17 +21,17 @@
           <ul>
           <span class="app_tilte"><%= link_to root_path do %><img src="/assets/header.png" alt="logo" id="logo"><% end %></span>
           <% if user_signed_in? %>
-            <li><%= link_to "タイムライン", posts_path, class: "text-black" %></li>
-            <li><%= link_to "トレンド", rank_books_path, class: "text-black" %></li>
-            <li><%= link_to "ユーザー", users_path, class: "text-black" %></li>
-            <li><%= link_to "マイページ", user_path(current_user.id), class: "text-black" %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-black" %></li>
+            <li><%= link_to "タイムライン", posts_path, class: "text-white" %></li>
+            <li><%= link_to "トレンド", rank_books_path, class: "text-white" %></li>
+            <li><%= link_to "ユーザー", users_path, class: "text-white" %></li>
+            <li><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></li>
             <% if current_user.admin? %>
               <li><%= link_to "管理者画面", rails_admin_path %></li>
             <% end %>
           <% else %>
-            <li><%= link_to "新規登録", new_user_registration_path, class: "text-black" %></li>
-            <li><%= link_to "ログイン", new_user_session_path, class: "text-black" %></li>
+            <li><%= link_to "新規登録", new_user_registration_path, class: "text-white" %></li>
+            <li><%= link_to "ログイン", new_user_session_path, class: "text-white" %></li>
           <% end %>
           </ul>
           </div>
