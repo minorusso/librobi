@@ -3,7 +3,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     let!(:user) { FactoryBot.create(:user) }
     let!(:book) { FactoryBot.create(:book) }
     # let!(:second_task) { FactoryBot.create(:second_task, user: user) }
-    describe '書籍検索機能' do
+    describe '書籍検索投稿機能' do
         before do
             visit new_user_session_path
             fill_in 'user[email]',with: user.email
@@ -34,8 +34,87 @@ RSpec.describe 'タスク管理機能', type: :system do
         #         expect(page).to have_content 'レビュー投稿'
         #     end
         # end
-        context '投稿すると' do
-            it '投稿一覧画面へ遷移する' do
+        # context '投稿すると' do
+        #     it '投稿一覧画面へ遷移する' do
+        #         find(".form-control").set("深夜特急")
+        #         click_button '検索'
+        #         click_on '詳細へ', match: :first
+        #         click_on 'レビューを作成する'
+        #         find('#star').find("img[alt='4']").click
+        #         find("#review").set("面白かったです。")
+        #         click_on '投稿する'
+        #         expect(page).to have_content '投稿一覧'
+        #     end
+        # end
+        # context '空の投稿すると' do
+        #     it 'バリデーションメッセージを表示する' do
+        #         find(".form-control").set("深夜特急")
+        #         click_button '検索'
+        #         click_on '詳細へ', match: :first
+        #         click_on 'レビューを作成する'
+        #         find('#star').find("img[alt='4']").click
+        #         find("#review").set("")
+        #         click_on '投稿する'
+        #         expect(page).to have_content 'レビューを入力してください'
+        #     end
+        # end
+        # context '更新すると' do
+        #     it '投稿一覧画面へ遷移する' do
+        #         find(".form-control").set("深夜特急")
+        #         click_button '検索'
+        #         click_on '詳細へ', match: :first
+        #         click_on 'レビューを作成する'
+        #         find('#star').find("img[alt='4']").click
+        #         find("#review").set("面白かったです。")
+        #         click_on '投稿する'
+        #         click_on '詳細', match: :first
+        #         click_on '編集'
+        #         find('#star').find("img[alt='4']").click
+        #         find("#review").set("更新しました。")
+        #         click_on '更新する'
+        #         expect(page).to have_content 'レビュー詳細'
+        #     end
+        # end
+        # context '更新の際、140文字以上入力すると' do
+        #     it 'エラーメッセージを表示する' do
+        #         find(".form-control").set("深夜特急")
+        #         click_button '検索'
+        #         click_on '詳細へ', match: :first
+        #         click_on 'レビューを作成する'
+        #         find('#star').find("img[alt='4']").click
+        #         find("#review").set("面白かったです。")
+        #         click_on '投稿する'
+        #         click_on '詳細', match: :first
+        #         click_on '編集'
+        #         find('#star').find("img[alt='4']").click
+        #         find("#review").set("更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。
+        #                             更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。
+        #                             更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。")
+        #         click_on '更新する'
+        #         expect(page).to have_content '140字以内で入力してください'
+        #     end
+        # end
+        # context '更新の際、140文字以上入力すると' do
+        #     it 'エラーメッセージを表示する' do
+        #         find(".form-control").set("深夜特急")
+        #         click_button '検索'
+        #         click_on '詳細へ', match: :first
+        #         click_on 'レビューを作成する'
+        #         find('#star').find("img[alt='4']").click
+        #         find("#review").set("面白かったです。")
+        #         click_on '投稿する'
+        #         click_on '詳細', match: :first
+        #         click_on '編集'
+        #         find('#star').find("img[alt='4']").click
+        #         find("#review").set("更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。
+        #                             更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。
+        #                             更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。更新しました。")
+        #         click_on '更新する'
+        #         expect(page).to have_content '140字以内で入力してください'
+        #     end
+        # end
+        context '削除ボタンを押すと' do
+            it 'エラーメッセージを表示する' do
                 find(".form-control").set("深夜特急")
                 click_button '検索'
                 click_on '詳細へ', match: :first
@@ -43,19 +122,9 @@ RSpec.describe 'タスク管理機能', type: :system do
                 find('#star').find("img[alt='4']").click
                 find("#review").set("面白かったです。")
                 click_on '投稿する'
-                expect(page).to have_content '投稿一覧'
-            end
-        end
-        context '空投稿すると' do
-            it '投稿一覧画面へ遷移する' do
-                find(".form-control").set("深夜特急")
-                click_button '検索'
-                click_on '詳細へ', match: :first
-                click_on 'レビューを作成する'
-                find('#star').find("img[alt='4']").click
-                find("#review").set("")
-                click_on '投稿する'
-                expect(page).to have_content '投稿一覧'
+                click_on '詳細', match: :first
+                click_on '削除する'
+                page.driver.browser.switch_to.alert.accept
             end
         end
     end
