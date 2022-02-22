@@ -1,8 +1,10 @@
-<div class="row justify-content-center">
-    <h1 class="font-weight-normal mt-5 mb-5">ランキング</h1>
+<div class="jumbotron">
+    <h1 class="display-4">⭐️Trend⭐️!</h1>
+    <p class="lead">楽天ブックス売上ランキング　TOP 10！</p>
+    <hr class="my-4">
+    <%= link_to "タイムラインに戻る", posts_path, class: "btn btn-warning btn-lg text-white" %>
 </div>
-
-<div class="row justify-content-center">
+<div class="container">
     <div class="content">
         <div class="card-wrap">
             <% if @books.present? %>
