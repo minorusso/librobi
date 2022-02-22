@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :set_post, only: [:create, :edit, :update]
+    before_action :set_post, only: [:create, :update]
     def create
         @post = Post.find(params[:post_id])
         @comment = current_user.comments.new(comment_params.merge(user_id: params[:user_id], post_id: params[:post_id]))

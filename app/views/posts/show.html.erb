@@ -35,7 +35,7 @@
             <div id="favorite_btn_<%= @post.id %>">
                 <%= render 'favorites/favorite', post: @post %>
             </div>
-            <h3>コメント一覧</h3>
+            <%# コメントがないときは一覧を表示しない %>
             <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
             <div id="comments_area">
             <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
