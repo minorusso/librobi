@@ -7,5 +7,4 @@ FactoryBot.define do
         image_url { "" }
         item_caption { "インドのデリーからイギリスのロンドンまで、乗合いバスで行ってみたいー。ある日そう思い立った２６歳" }
     end
-
 end
