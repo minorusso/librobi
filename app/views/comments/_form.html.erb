@@ -8,15 +8,15 @@
         <% end %>
         </ul>
         </div>
-    <% end %>
-
-    <div class="field">
-        <%= form.label "コメント" %>
-        <%= form.text_area :comment %>
-    </div>
-
-    <div class="actions">
-        <%= form.submit "コメントする" %>
+    <% end %>   
+    <div class="text-right">
+        <div class="field">
+            <%= form.text_area :comment, placeholder:"コメントを入力してください。", class: "form-control" %>
+            <p class="help-block">※100文字以内で書いてください</p>
+        </div>
+        <div class="actions">
+            <%= form.submit "コメントする", class: "btn btn-success mb-3" %>
+        </div>
     </div>
 <% end %>
 

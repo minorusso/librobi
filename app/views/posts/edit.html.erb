@@ -9,7 +9,9 @@
         <div class="card-list">
             <p class="book-image"><%= link_to (image_tag(@book.image_url)), @book.url %></p>
             <p class="book-titler">タイトル：<%= @book.title %></p>
+            <hr class="my-３">
             <p class="book-author">著者/編集：<%= @book.author %></p>
+            <hr class="my-３">
             <p class="book-itemCaption">内容紹介：<%= @book.item_caption %></p>
         </div>
         <div class="card-list">     
@@ -36,11 +38,13 @@
                 scoreName: '[rate]',
                 half: true,
             });
-            </script>  
-                <%= form.submit "更新する", class: "btn btn-success mb-3" %>
+            </script>
+                <div class="text-right">
+                    <%= form.submit "更新する", class: "btn btn-success mb-3" %>
+                </div> 
             <% end %>
             <%= link_to "詳細に戻る", post_path(id: @post.id, book_id: @post.book.id ), class: "btn btn-dark" %> 
-            <%= link_to '削除する', post_path(id: @post.id, book_id: @post.book.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger mr-3" %>
+            <%= link_to '削除', post_path(id: @post.id, book_id: @post.book.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger mr-3" %>
         </div>
     </div>
 </div> 

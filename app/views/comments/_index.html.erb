@@ -1,16 +1,15 @@
-<% if comments.present? %>
-    <h3 class="comment-index">コメント一覧</h3>
-    <% comments.each do |comment| %>
-        <% if comment.id.present? %>
-            <hr class="my-３">
-            <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>    
-            <%= comment.user.name %>：<%= comment.comment %>
-            <% if current_user == comment.user %>
-                <div class="text-right">
-                    <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true,
-                                        data: { confirm: "本当に削除しますか?"}, class: "btn btn-danger btn-sm mr-auto" %>
-                </div>  
-            <% end %>
+<h3 class="comment-index">コメント</h3>
+<hr class="my-３">
+<% comments.each do |comment| %>
+    <% if comment.id.present? %>
+        <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>    
+        <%= comment.user.name %>：<%= comment.comment %>
+        <% if current_user == comment.user %>
+            <div class="text-right">
+                <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true,
+                                    data: { confirm: "本当に削除しますか?"}, class: "btn btn-danger btn-sm mr-auto" %>
+            </div>
         <% end %>
+        <hr class="my-３">
     <% end %>
 <% end %>

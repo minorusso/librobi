@@ -14,7 +14,9 @@
         <div class="card-list">
             <p class="book-image"><%= link_to (image_tag(@book.image_url)), @book.url %></p>
             <p class="book-titler">タイトル：<%= @book.title %></p>
+            <hr class="my-３">
             <p class="book-author">著者/編集：<%= @book.author %></p>
+            <hr class="my-３">
             <p class="book-itemCaption">内容紹介：<%= @book.item_caption %></p>
         </div>
         <div class="card-list">
@@ -32,8 +34,10 @@
             });
             </script>  
                 <p><%= @post.review %></p>
-            <div id="favorite_btn_<%= @post.id %>">
-                <%= render 'favorites/favorite', post: @post %>
+            <div class="text-right">
+                <div id="favorite_btn_<%= @post.id %>">
+                    <%= render 'favorites/favorite', post: @post %>
+                </div>
             </div>
             <%# コメントがないときは一覧を表示しない %>
             <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->

@@ -12,7 +12,9 @@
                 <div class="card-list">           
                     <p class="book-image"><%= link_to (image_tag(book.image_url)), book.url %></p>
                     <p class="book-titler">タイトル：<%= book.title %></p>
+                    <hr class="my-３">
                     <p class="book-author">著者/編集：<%= book.author %></p>
+                    <hr class="my-３">
                     <p class="book-itemCaption">内容紹介：<%= book.item_caption %></p>
                     <%= link_to "詳細へ", book_path(isbn: book.isbn),  class: "btn btn-success" %><br>
                 </div>
