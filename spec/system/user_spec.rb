@@ -77,7 +77,23 @@ RSpec.describe 'dvevise/ユーザー機能', type: :system do
                 expect(page).to have_content('投稿一覧') 
             end
         end
-
+    end
+    describe 'マイページ編集機能' do
+        before do
+            user = FactoryBot.create(:user)
+            visit new_user_session_path
+            fill_in 'user[email]',with: user.email
+            fill_in 'user[password]',with: user.password
+        end
+        context 'プロフィールを編集した場合'do 
+            it 'マイページに遷移する' do 
+                click_button 'ログイン'
+                click_on 'マイページ'
+                click_on 'プロフィール編集'
+                click_on '保存する'
+                expect(page).to have_content ('マイページ')
+            end
+        end
     end
 
 

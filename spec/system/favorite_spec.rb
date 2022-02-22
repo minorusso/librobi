@@ -20,6 +20,7 @@ RSpec.describe 'お気に入り機能', type: :system do
         context 'いいねを押すと' do
             it 'カウントが1増える' do
                 find(".favorite_btn").click
+                sleep 1
                 expect(page).to have_content (1)
             end
         end
