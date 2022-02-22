@@ -17,24 +17,35 @@
   <body>
   <div class="body-wrap">
       <header class='header'>
-          <div class="link-list">
-          <ul>
-          <span class="app_tilte"><%= link_to root_path do %><img src="/assets/header.png" alt="logo" id="logo"><% end %></span>
-          <% if user_signed_in? %>
-            <li><%= link_to "タイムライン", posts_path, class: "text-white" %></li>
-            <li><%= link_to "トレンド", rank_books_path, class: "text-white" %></li>
-            <li><%= link_to "ユーザー", users_path, class: "text-white" %></li>
-            <li><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></li>
-            <% if current_user.admin? %>
-              <li><%= link_to "管理者画面", rails_admin_path %></li>
-            <% end %>
-          <% else %>
-            <li><%= link_to "新規登録", new_user_registration_path, class: "text-white" %></li>
-            <li><%= link_to "ログイン", new_user_session_path, class: "text-white" %></li>
-          <% end %>
-          </ul>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="/assets/header.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
+            <%= link_to "Librobi", new_user_session_path, class: "navbar-brand text-white" %>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto ">
+              <% if user_signed_in? %>
+                <a class="nav-link" href="#"><%= link_to "タイムライン", posts_path, class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "トレンド", rank_books_path, class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "ユーザー", users_path, class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></a>
+                <% if current_user.admin? %>
+                  <a class="nav-link" href="#"><%= link_to "管理者画面", rails_admin_path, class: "text-white" %></a>
+                <% end %>
+              <% else %>
+                <a class="nav-link" href="#"><%= link_to "新規登録", new_user_registration_path, class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "ログイン", new_user_session_path, class: "text-white" %></a>
+              <% end %>
+            </div>
           </div>
+          
+          </div>
+          </nav>
       </header>
 
     <div id="notices"> 
@@ -52,7 +63,7 @@
         <div class="input-group">
           <%= text_field_tag :title, @title, placeholder:"書籍のタイトルを入力してください。", class: "form-control form-control-lg" %>
           <span class="input-group-btn" >
-            <%= button_tag "検索", class: "form-control form-control-lg btn btn-warning" %>
+            <%= button_tag "検索", class: "btn btn-warning" %>
           </span>
         </div>
         <% end %>  

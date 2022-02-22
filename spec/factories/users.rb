@@ -3,12 +3,13 @@ FactoryBot.define do
         name { "テストユーザー" }
         email { "test@test.com" }
         password  { "password" }
+        password_confirmation { "password" }
         admin { 'true' }
     end
     factory :user, class: User do
         name { 'ユーザー1' }
-        email{ 'user_1@test.com' }
-        password { '111111' }
+        email{ 'user1@test.com' }
+        password { 'password1' }
         admin {  'false'}
     end
 

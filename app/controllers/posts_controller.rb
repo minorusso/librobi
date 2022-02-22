@@ -20,8 +20,13 @@ class PostsController < ApplicationController
         post_find = Post.where(book_id: @book.id).where(user_id: current_user.id)
         post_count = post_find.count
         if post_count < 1
-            @post.save
-            redirect_to posts_path, notice: "レビューを保存しました"
+            if @post.save
+                redirect_to posts_path, notice: "レビューを保存しました"
+            elsif @post.review.present? 
+                redirect_to posts_path, notice: "140字以内で入力してください"
+            else
+                redirect_to posts_path, notice: "レビューを入力してください"
+            end
         else
             redirect_to posts_path, notice: "一度レビューしています。編集してください。"
             # redirect_to edit_post_path(id: post_find.first.id, book_id: @post.book.id), notice: "レビューの投稿は一度までです"
@@ -33,10 +38,14 @@ class PostsController < ApplicationController
         @book = Book.find_by(id: params[:book_id])
     end
     def update
-        binding.irb
         post = Post.find(params[:id])
-        post.update(review: params[:review], rate: params[:rate])
-        redirect_to post_path(id: post.id, book_id: post.book.id )
+        if post.update(review: params[:review], rate: params[:rate])
+            redirect_to post_path(id: post.id, book_id: post.book.id )
+        elsif post.review.present? 
+            redirect_to post_path(id: post.id, book_id: post.book.id ), notice: "140字以内で入力してください"
+        else
+            redirect_to post_path(id: post.id, book_id: post.book.id ), notice: "レビューを入力してください"
+        end
     end
     def show
         @post = Post.find(params[:id])

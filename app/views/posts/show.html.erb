@@ -38,8 +38,8 @@
                 <%= link_to '削除する', post_path(id: @post.id, book_id: @post.book.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger mr-3" %>
             <% end %>
             <%= link_to "タイムラインに戻る", posts_path, class: "btn btn-dark" %>
-
-
+        </div>
+        <div class="comment-card">
             <h3>コメント一覧</h3>
             <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
             <div id="comments_area">
