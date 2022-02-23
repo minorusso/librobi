@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_normal_user, only: %i[edit update destroy]
+  before_action :ensure_normal_user, only: %i[ update destroy]
 
   def index
     @users = User.page(params[:page]).per(5).reverse_order
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
@@ -40,8 +40,8 @@ class UsersController < ApplicationController
   
   def ensure_normal_user
     @user = User.find(params[:id])
-    if @user.name == 'ゲスト'
-      redirect_to user_session_path, alert: 'ゲストユーザーの更新・削除はできません'
+    if @user.name == 'ゲスト'||'管理者ゲスト'
+      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません'
     end
   end
 end
