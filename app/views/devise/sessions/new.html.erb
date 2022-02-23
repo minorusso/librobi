@@ -1,5 +1,5 @@
-<div class="content">
     <div class="text-center">
+    <div class="session-content">
       <div class="box2">
         <div class="box-inner">
           <p class="sub-title">〜みんなの本棚〜</p>
@@ -12,8 +12,7 @@
           <%= button_to 'ゲストログイン（一般ユーザー用）', users_guest_sign_in_path, class: "btn btn-warning" , method: :post %>
         </div>
       </div>
-    </div>
-  <div class="text-center">
+
     <div class="box2">
       <div class="box-inner">
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
@@ -50,5 +49,5 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 </div>

@@ -13,14 +13,16 @@ sub-title {
     font-family: serif;
 }
 
-.content {
+.session-content {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .box1 {
     width: 350px;
-    height: 600px;
+    min-height: 600px;
     margin: 60px auto 0;
     border-radius: 4px;
     border: 1px #ddd solid;
@@ -39,7 +41,7 @@ sub-title {
 
 .box2 {
     width: 400px;
-    min-height: 600px;
+    min-height: 500px;
     margin: 60px 30px 30px 30px;
     border-radius: 4px;
     border: 1px #ddd solid;
