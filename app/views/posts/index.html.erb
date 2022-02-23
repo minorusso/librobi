@@ -5,7 +5,6 @@
     <p>今読みたいものがない...そんなアナタはコチラ！！！</p>
     <%= link_to "⭐️Trend⭐️", rank_books_path, class: "btn btn-warning btn-lg text-white" %>
 </div>
-<div class="container">
     <div class="content">
         <div class="card-wrap">
             <% @posts.each do |post| %>
@@ -41,7 +40,6 @@
         </div>
     </div>
     <%= paginate @posts %>
-</div>
 
 
 
