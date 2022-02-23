@@ -54,7 +54,7 @@ end
                 )
 end
 
-#Comments
+# #Comments
 10.times do |n|
     comment = "#{n + 1}番目に面白かった？"
     user_id = n + 1
@@ -65,7 +65,7 @@ end
                 )
 end
 
-#Favorites
+# #Favorites
 10.times do |n|
     user_id = n + 1
     post_id = n + 1

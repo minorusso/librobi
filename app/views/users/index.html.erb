@@ -4,10 +4,10 @@
     <%= link_to "タイムライン", posts_path, class: "btn btn-warning btn-lg text-white" %>
 </div>
 <div class="container">
-    <div class="row justify-content-end mb-3">
+    <div class="text-right mb-3">
         <%= form_with url: users_path, method: :get, local: true do |f| %>
             <%= f.text_field :search %>
-            <%= f.submit '検索する', name: nil %>
+            <%= f.submit '検索', name: nil, class: "btn btn-info" %>
         <% end %>
     </div>
     <%= render 'form', users: @users, user: @user %>

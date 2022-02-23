@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :ensure_normal_user, only: %i[ update destroy]
 
   def index
-    @users = User.page(params[:page]).per(5).reverse_order
+    @users = User.page(params[:page]).per(20).reverse_order
     @users = @users.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
   
