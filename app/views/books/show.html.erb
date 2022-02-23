@@ -1,17 +1,19 @@
-<div class="row justify-content-center">
-    <h1 class="font-weight-normal mt-5 mb-5">書籍情報</h1>
+<div class="jumbotron">
+    <h1 class="display-4">書籍情報!</h1>
+    <p class="lead">タイトル・著者・内容紹介などが確認できます！</p>
+    <hr class="my-4">
+    <%= link_to "戻る", :back, class: "btn btn-secondary btn-lg text-white" %>
 </div>
-
-<div class="row justify-content-center">
+<div class="container">
     <div class="content">
-        <div class="card-wrap">
-            <div class="card-list">
-                <p class="book-image"><%= link_to (image_tag(@book.image_url)), @book.url %></p>
-                <p class="book-titler">タイトル：<%= @book.title %></p>
-                <p class="book-author">著者/編集：<%= @book.author %></p>
-                <p class="book-itemCaption">内容紹介：<%= @book.item_caption %></p>
-                <%= link_to "レビューを作成する", new_post_path(isbn: @book.isbn),  class: "btn btn-success" %><br>
-            </div>
+        <div class="card-list">
+            <p class="book-image"><%= link_to (image_tag(@book.image_url)), @book.url %></p>
+            <p class="book-titler">タイトル：<%= @book.title %></p>
+            <hr class="my-３">
+            <p class="book-author">著者/編集：<%= @book.author %></p>
+            <hr class="my-３">
+            <p class="book-itemCaption">内容紹介：<%= @book.item_caption %></p>
+            <%= link_to "レビューを作成する", new_post_path(isbn: @book.isbn),  class: "btn btn-success" %><br>
         </div>
     </div>
 </div>

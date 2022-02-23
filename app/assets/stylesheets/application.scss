@@ -31,49 +31,49 @@ body{
   box-sizing: border-box;
 }
 
-.header{
-  padding: 0px 0px;
-  background-color: black;
-  margin: 0px 0px 0px 0px;
-  width: 100%;
-  vertical-align: middle;
-}
+// .header{
+//   padding: 0px 0px;
+//   background-color: black;
+//   margin: 0px 0px 0px 0px;
+//   width: 100%;
+//   vertical-align: middle;
+// }
 
-.app_tilte{
-  /* font-size: 2rem; */
-  vertical-align: middle;
-  color: white;
-  /* margin: 0 100 0 0px; */
-  /* font-weight: bold; */
-}
+// .app_tilte{
+//   /* font-size: 2rem; */
+//   vertical-align: middle;
+//   color: white;
+//   /* margin: 0 100 0 0px; */
+//   /* font-weight: bold; */
+// }
 
-.header ul{
-  width: 100%;
-  padding: 0px;
-  margin: 0px;
-  display: flex;
-  justify-content: space-between;
-}
+// .header ul{
+//   width: 100%;
+//   padding: 0px;
+//   margin: 0px;
+//   display: flex;
+//   justify-content: space-between;
+// }
 
 // // .link-list{
 // //   /* float: right; */
 // // }
 
-.header li{
-  list-style:none;
-  float: left;
-  font-size: 1.0rem;
-  margin: 10px 5px 0 5px;
-}
+// .header li{
+//   list-style:none;
+//   float: left;
+//   font-size: 1.0rem;
+//   margin: 10px 5px 0 5px;
+// }
 
-li a{
-  color: white;
-  font-weight: bold;
-}
+// li a{
+//   color: white;
+//   font-weight: bold;
+// }
 
-li a:hover{
-  color: rgb(250, 255, 109);
-}
+// li a:hover{
+//   color: rgb(250, 255, 109);
+// }
 
 // .app_tilte{
 //   text-align: left;
@@ -124,10 +124,10 @@ li a:hover{
   color: white;
 }
 
-#logo {
-  width: 40px;
-  height: 40px;
-}
+// #logo {
+//   width: 40px;
+//   height: 40px;
+// }
 
 #search-box {
   margin: 10px 50px 10px 50px ;
@@ -135,4 +135,5 @@ li a:hover{
 .input-group-btn {
   margin-top: 3px;
   margin-left: 30px;
+  margin-right: 40px;
 }
