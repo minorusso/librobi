@@ -2,6 +2,7 @@ FactoryBot.define do
     factory :book, class: Book do
         title { "七日七夜" }
         author { "大塚 優花" }
+        publisher_name { "幻冬社" }
         isbn  { "9784101235288" }
         url { 'https://books.rakuten.co.jp/rb/16343869/' }
         image_url { "" }
