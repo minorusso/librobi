@@ -1,12 +1,18 @@
-<div class="row justify-content-center">
-    <% users.each do |user| %>
-    <div class="one-post card w-100">
-        <%= link_to user_path(user) do %>
-        <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg' %><br>
-        <p class="caption h4"><%= user.name %></p>
-        <p class="caption"><%= "#{user.posts.count} 投稿" %></p>
-        <% end %>
+<% users.each do |user| %>
+    <div class="media">
+        <a class="pull-left" href="#">
+            <p class="user-profile-image"><%= attachment_image_tag user, :profile_image, fallback: "no_profile_image.png", class: "mb-3 profile-img" %></p>
+        </a>
+        <div class="media-body">
+            <%= link_to user_path(user) do %>
+                <h4 class="media-heading"><%= user.name %></h4>
+            <% end %>
+            <%= user.profile %>
+            <p class="caption"><%= "#{user.posts.count} 投稿" %></p>
+            <hr class="my-4">
+        </div>
     </div>
-    <% end %>
+<% end %>
+<div class="text-right">
     <%= paginate users %>
 </div>

@@ -1,6 +1,19 @@
-// // Place all the styles related to the books controller here.
-// // They will automatically be included in application.css.
-// // You can use Sass (SCSS) here: https://sass-lang.com/
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.book-card-list {
+    width: 600px;
+    margin-bottom: 50px;
+    // max-height: auto;
+    // margin-right: 40px;
+    border-width : 1px;
+    border-style: solid;
+    border-color:rgba(202, 202, 202, 0.978);
+    border-radius: 30px;
+    padding: 40px;
+}
+
+
 // .profile-image {
 //     width: 60px;
 //     height: 60px;

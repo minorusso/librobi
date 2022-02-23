@@ -69,13 +69,15 @@ class PostsController < ApplicationController
     def read(result)
         title = result["title"]
         author = result["author"]
+        publishername = result["publisherName"]
         url = result["itemUrl"]
         isbn = result["isbn"]
-        image_url = result["mediumImageUrl"]
+        image_url = result["largeImageUrl"]
         item_caption = result["itemCaption"]
         {
         title: title,
         author: author,
+        publishername: publishername,
         url: url,
         isbn: isbn,
         image_url: image_url,

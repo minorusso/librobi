@@ -62,6 +62,7 @@ class BooksController < ApplicationController
   def read(result)
     title = result["title"]
     author = result["author"]
+    publishername = result["publisherName"]
     url = result["itemUrl"]
     isbn = result["isbn"]
     image_url = result["largeImageUrl"]
@@ -69,6 +70,7 @@ class BooksController < ApplicationController
     {
       title: title,
       author: author,
+      publishername: publishername,
       url: url,
       isbn: isbn,
       image_url: image_url,
