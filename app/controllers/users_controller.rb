@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   
   def ensure_normal_user
     @user = User.find(params[:id])
-    if @user.name == 'ゲスト'||'管理者ゲスト'
+    if @user.name == 'ゲスト'|| @user.name == '管理者ゲスト'
       redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません'
     end
   end
