@@ -10,7 +10,7 @@
         <% @posts.each do |post| %>    
         <div class="card">
             <div class="card-header">
-                <p class="profile-image"><%= attachment_image_tag post.user, :profile_image, fallback: "no_profile_image.png", class: "mb-3 profile-i" %></p>
+                <p class="profile-image"><%= attachment_image_tag post.user, :profile_image, fallback: "no_profile_image.png", class: "mb-3 profile-img" %></p>
                 <p class="name"><%= post.user.name %></p>
             </div>
             <div class="card-body">
