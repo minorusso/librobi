@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
-  end
-
-  devise_scope :user do
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
+    root :to => "devise/sessions#new"
   end
 
   resources :users, only: [:index, :show, :edit, :update] do
@@ -18,8 +16,6 @@ Rails.application.routes.draw do
     end
     resource :relationships, only: [:create, :destroy]
   end
-
-  root to: 'posts#index'
 
   resources :posts do
     resources :comments

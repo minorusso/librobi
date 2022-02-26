@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   def ensure_normal_user
     if @user.name == 'ゲスト'|| @user.name == '管理者ゲスト'
-      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません'
+      redirect_to posts_path, alert: 'ゲストユーザーの更新・削除はできません'
     end
   end
   # # GET /resource/sign_up
