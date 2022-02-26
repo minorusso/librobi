@@ -34,17 +34,6 @@ class BooksController < ApplicationController
       end
     end
   end
-
-  # def create
-  #   @book = Book.find_or_initialize_by(isbn: params[:isbn])
-  #   unless @book.persisted?
-  #     results = RakutenWebService::Books::Book.search(isbn: @book.isbn)
-  #     @book = Book.new(read(results.first))
-  #     # @book.save
-  #   end
-  #   # render :show
-  #   redirect_to books_show_path(isbn: @book.isbn)
-  # end
   
 
   def show
