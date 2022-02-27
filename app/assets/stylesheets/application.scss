@@ -29,7 +29,49 @@ body{
   min-height: 100%;
   padding-bottom: 65px;/*←footerの高さ*/
   box-sizing: border-box;
+  background: linear-gradient(180deg, #f2ff42, #4da88d, #757576);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 18s ease infinite;
+  -moz-animation: AnimationName 18s ease infinite;
+  animation: AnimationName 18s ease infinite;
 }
+
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:83% 0%}
+  50%{background-position:18% 100%}
+  100%{background-position:83% 0%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:83% 0%}
+  50%{background-position:18% 100%}
+  100%{background-position:83% 0%}
+}
+@keyframes AnimationName {
+  0%{background-position:83% 0%}
+  50%{background-position:18% 100%}
+  100%{background-position:83% 0%}
+}
+
+.jumbotron {
+  margin-bottom: 5rem;
+}
+
+// .background-timeline{
+//   background-image: url(/assets/smile.png);
+//   background-color:rgba(255,255,255,0.4);
+//   // background-blend-mode:lighten;
+//   // background-size: 100% 100%;
+//   // background-size: cover;
+//   // background-repeat: repeat;
+// }
+
+// .background-rank{
+//   background-image: url(/assets/star.png);
+//   background-color:rgba(255,255,255,0.4);
+// }
+
 
 // .header{
 //   padding: 0px 0px;
