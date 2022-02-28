@@ -1,0 +1,52 @@
+<div class="jumbotron">
+    <h1 class="display-4">レビュー編集!</h1>
+    <p class="lead">作品情報・レビュー・いいね・コメントが確認できます！</p>
+    <hr class="my-4">
+    <%= link_to "タイムラインに戻る", posts_path, class: "btn btn-warning btn-lg text-white" %>
+</div>
+<div class="container">
+    <div class="content">
+        <div class="card-list">
+            <p class="book-image"><%= link_to (image_tag(@book.image_url)), @book.url %></p>
+            <p class="book-title">タイトル：<%= @book.title %></p>
+            <hr class="my-３">
+            <p class="book-author">著者/編集：<%= @book.author %></p>
+            <hr class="my-３">
+            <p class="book-publisherName">出版社：<%= @book.publishername %></p>
+            <hr class="my-３">
+            <p class="book-itemCaption">内容紹介：<%= @book.item_caption %></p>
+        </div>
+        <div class="card-list">     
+            <%= form_with(model: @post, local: true) do |form| %>
+            <!-- 評価 -->
+            <div class="form-group" id="star">
+                <%= form.label :rate,'評価：' %>
+                <%= form.hidden_field :rate, id: :review_star %>
+            </div>
+            <div class="form-group">
+            <label for=" introduction" class="control-label">レビュー：</label>
+                <%= form.hidden_field :isbn, :value => @book.isbn %>
+                <textarea name="review" id="review" cols="45" rows="4"
+                placeholder="レビューを書いてください" class="form-control"></textarea>
+                <!-- 注意書きは以下 -->
+                <p class="help-block">※140文字以内で書いてください</p>
+            </div> 
+            <script>
+            $('#star').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: '[rate]',
+                half: true,
+            });
+            </script>
+                <div class="text-right">
+                    <%= form.submit "更新する", class: "btn btn-success mb-3" %>
+                </div> 
+            <% end %>
+            <%= link_to "詳細に戻る", post_path(id: @post.id, book_id: @post.book.id ), class: "btn btn-dark" %> 
+            <%= link_to '削除', post_path(id: @post.id, book_id: @post.book.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger mr-3" %>
+        </div>
+    </div>
+</div> 

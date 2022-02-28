@@ -4,26 +4,75 @@
     <title>Librobi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "レビュー投稿", posts_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+  <div class="body-wrap">
+      <header class='header'>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <%= image_tag "header.png", size: '40x40', class:"d-inline-block align-text-top"%>
+            <%= link_to "Librobi", new_user_session_path, class: "navbar-brand text-white" %>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto ">
+              <% if user_signed_in? %>
+                <a class="nav-link" href="#"><%= link_to "タイムライン", posts_path, class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "トレンド", rank_books_path, class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "ユーザー", users_path, class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></a>
+                <% if current_user.admin? %>
+                  <a class="nav-link" href="#"><%= link_to "管理者画面", rails_admin_path, class: "text-white" %></a>
+                <% end %>
+              <% else %>
+                <a class="nav-link" href="#"><%= link_to "新規登録", new_user_registration_path, class: "text-white" %></a>
+                <a class="nav-link" href="#"><%= link_to "ログイン", new_user_session_path, class: "text-white" %></a>
+              <% end %>
+            </div>
+          </div>
+          
+          </div>
+          </nav>
+      </header>
 
-  <% if notice %>
-    <p class="alert alert-notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-error"><%= alert %></p>
-  <% end %>
+    <div id="notices"> 
+      <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+      <% end %> 
+    </div>
+
+    <div id="search-box">
+      <% if user_signed_in? %>
+        <%= form_tag(search_books_path, method: :get) do %>
+        <div class="input-group">
+          <%= text_field_tag :title, @title, placeholder:"書籍のタイトルを入力してください。", class: "form-control form-control-lg" %>
+          <span class="input-group-btn" >
+            <%= button_tag "検索", class: "btn btn-warning" %>
+          </span>
+        </div>
+        <% end %>  
+      <% end %>
+    </div>
     <%= yield %>
+    <footer class='footer'>
+      <p>Librobi  Create by MY </p>
+    </footer>
+    </div>
   </body>
 </html>

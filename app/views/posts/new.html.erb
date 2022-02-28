@@ -1,8 +1,49 @@
-<%= form_with(model: Post.new, local: true) do |form| %>
-
-<div class="post_review">
-    <%= form.label :review %>
-    <%= form.text_field :review %>
+<div class="jumbotron">
+    <h1 class="display-4">レビュー作成!</h1>
+    <p class="lead">読んだ作品のレビューをシェアしよう！</p>
+    <hr class="my-4">
+    <%= link_to "戻る", :back, class: "btn btn-secondary btn-lg text-white" %>
 </div>
-<%= form.submit %>
-<% end %>
+<div class="container">
+    <div class="content">
+        <div class="card-list">
+            <p class="book-image"><%= link_to (image_tag(@book.image_url)), @book.url %></p>
+            <p class="book-title">タイトル：<%= @book.title %></p>
+            <hr class="my-３">
+            <p class="book-author">著者/編集：<%= @book.author %></p>
+            <hr class="my-３">
+            <p class="book-publisherName">出版社：<%= @book.publishername %></p>
+            <hr class="my-３">
+            <p class="book-itemCaption">内容紹介：<%= @book.item_caption %></p>
+        </div>
+        <div class="card-list">
+            <%= form_with(url: posts_path , local: true) do |form| %>
+            <!-- 評価 -->
+            <div class="form-group" id="star">
+                <%= form.label :rate,'評価：' %>
+                <%= form.hidden_field :rate, id: :review_star %>
+            </div>
+            <div class="form-group">
+            <label for=" introduction" class="control-label">レビュー</label>
+                <%= form.hidden_field :isbn, :value => @book.isbn %>
+                <textarea name="review" id="review" cols="45" rows="4"
+                placeholder="レビューを書いてください" class="form-control"></textarea>
+                <!-- 注意書きは以下 -->
+                <p class="help-block">※140文字以内で書いてください</p>
+            </div> 
+            <!-- 評価javascript -->
+            <script>
+            $('#star').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: '[rate]',
+                half: true,
+            });
+            </script>  
+                <%= form.submit '投稿する', class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div> 
+</div> 

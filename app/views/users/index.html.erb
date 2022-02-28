@@ -1,0 +1,14 @@
+<div class="jumbotron">
+    <h1 class="display-4">ユーザー一覧!</h1>
+    <hr class="my-4">
+    <%= link_to "タイムライン", posts_path, class: "btn btn-warning btn-lg text-white" %>
+</div>
+<div class="container">
+    <div class="text-right mb-3">
+        <%= form_with url: users_path, method: :get, local: true do |f| %>
+            <%= f.text_field :search %>
+            <%= f.submit '検索', name: nil, class: "btn btn-info" %>
+        <% end %>
+    </div>
+    <%= render 'form', users: @users, user: @user %>
+</div>

@@ -1,0 +1,38 @@
+<div class="jumbotron">
+    <h1 class="display-4">検索結果!</h1>
+    <hr class="my-4">
+    <%= link_to "タイムライン", posts_path, class: "btn btn-warning btn-lg text-white" %>
+</div>
+<div class="container">
+    <div class="content">
+        <div class="card-wrap">
+            <% if @books.present? %>
+                <% @books.each do |book| %>
+                <div class="card"> 
+                    <div class="card-body">
+                        <div class="row g-0">
+                            <div class="col-md-4">         
+                                <p class="book-image"><%= link_to (image_tag(book.image_url)), book.url %></p>
+                            </div>
+                            <div class="card-body">
+                                <p class="book-title">タイトル：<%= book.title %></p>
+                                <hr class="my-３">
+                                <p class="book-author">著者/編集：<%= book.author %></p>
+                                <hr class="my-３">
+                                <p class="book-publisherName">出版社：<%= book.publishername %></p>
+                                <hr class="my-３">
+                                <p class="book-itemCaption">内容紹介：<%= book.item_caption %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-right ">   
+                            <%= link_to "詳細へ", book_path(isbn: book.isbn),  class: "btn btn-success" %><br>
+                        </div>
+                    </div>  
+                </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>

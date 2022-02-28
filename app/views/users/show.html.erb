@@ -1,0 +1,95 @@
+<div class="jumbotron">
+    <% if user_signed_in? && @user == current_user %>
+        <h1 class="display-4">マイページ</h1>
+    <% else %>
+        <h1 class="display-4"><%= @user.name %>さんのページ</h1>
+    <% end %>
+    <hr class="my-4">
+    <%= link_to "タイムライン", posts_path, class: "btn btn-warning btn-lg text-white" %>
+</div>
+<div class="container">
+    <div class="text-right">
+        <% if user_signed_in? && @user == current_user %>
+            <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn-sm btn-success" %><br>
+        <% end %>
+    </div>
+    <div class="media">
+        <a class="pull-left" href="#">
+            <p class="user-profile-image"><%= attachment_image_tag @user, :profile_image, fallback: "no_profile_image.png", class: "mb-3 profile-img" %></p>
+        </a>
+        <div class="media-body">
+            <%= link_to user_path(@user) do %>
+                <h4 class="media-heading"><%= @user.name %></h4>
+            <% end %>
+            <%= @user.profile %>
+            <p class="caption"><%= "#{@user.posts.count} 投稿" %></p>
+            <hr class="my-4">
+        </div>
+    </div>
+    <% if current_user != @user %>
+        <% if current_user.following?(@user) %>
+        <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn-sm btn-danger" %>
+        <% else %>
+        <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class:"btn-sm btn-success" %>
+        <% end %>
+    <% end %>
+    <div class="display-flex">
+        <%= link_to follows_user_path(@user) do %>
+            <h6>フォロー<%= @following_users.count %></h6>
+        <% end %>&nbsp;&nbsp;
+        <%= link_to followers_user_path(@user) do %>
+            <h6>フォロワー<%= @follower_users.count %></h6>
+        <% end %>
+    </div>
+    <div class="d-flex justify-content-center">
+            <h1 class="font-weight-normal mt-5 mb-5">これまでのレビュー</h1> 
+        </div> 
+    <div class="content">
+        <div class="card-wrap">    
+            <% @posts.each do |post| %>
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <p class="book-image"><%= link_to (image_tag(post.book.image_url)), post.book.url %></p>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="book-title"><%= post.book.title %></h5>
+                                    <div id="star-rate-<%= post.id %>"></div>
+                                        <script>
+                                            $('#star-rate-<%= post.id %>').raty({
+                                                size: 36,
+                                                starOff:  '<%= asset_path('star-off.png') %>',
+                                                starOn : '<%= asset_path('star-on.png') %>',
+                                                starHalf: '<%= asset_path('star-half.png') %>',
+                                                half: true,
+                                                readOnly: true,
+                                                score: <%= post.rate %>,
+                                            });
+                                        </script>
+                                    <p class="review"><%= post.review %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="card-footer">
+                        <p class="card-text"><small class="text-muted"><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></small></p>
+                        <div id="favorite_btn_<%= post.id %>">
+                            <%= render 'favorites/favorite', post: post %>
+                        </div>
+                        <%= "#{post.comments.count} コメント" %>
+                        <div class="text-right ">   
+                            <%= link_to "詳細", post_path(id: post.id, book_id: post.book.id ),  class: "btn btn-success" %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="pagination justify-content-center">
+        <%= paginate @posts %>
+    </div>              
+</div>
