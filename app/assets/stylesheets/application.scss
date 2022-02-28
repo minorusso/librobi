@@ -29,30 +29,37 @@ body{
   min-height: 100%;
   padding-bottom: 65px;/*←footerの高さ*/
   box-sizing: border-box;
-  background: linear-gradient(180deg, #f2ff42, #4da88d, #757576);
-  background-size: 600% 600%;
 
-  -webkit-animation: AnimationName 18s ease infinite;
-  -moz-animation: AnimationName 18s ease infinite;
-  animation: AnimationName 18s ease infinite;
+  background: linear-gradient(10deg, #565656, #7f7f7f, #b8e5ec, #e5ec87, #c8ecb5, #8c8c8c, #616161, #383838);
+    background-size: 1600% 1600%;
+    -webkit-animation: AnimationName 44s ease infinite;
+    -moz-animation: AnimationName 44s ease infinite;
+    -o-animation: AnimationName 44s ease infinite;
+    animation: AnimationName 44s ease infinite;
 }
-
-
 @-webkit-keyframes AnimationName {
-  0%{background-position:83% 0%}
-  50%{background-position:18% 100%}
-  100%{background-position:83% 0%}
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
 }
 @-moz-keyframes AnimationName {
-  0%{background-position:83% 0%}
-  50%{background-position:18% 100%}
-  100%{background-position:83% 0%}
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
 }
 @keyframes AnimationName {
-  0%{background-position:83% 0%}
-  50%{background-position:18% 100%}
-  100%{background-position:83% 0%}
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
 }
+
+
+
 
 .jumbotron {
   margin-bottom: 5rem;
