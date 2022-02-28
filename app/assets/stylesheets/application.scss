@@ -29,7 +29,56 @@ body{
   min-height: 100%;
   padding-bottom: 65px;/*←footerの高さ*/
   box-sizing: border-box;
+
+  background: linear-gradient(10deg, #565656, #7f7f7f, #b8e5ec, #e5ec87, #c8ecb5, #8c8c8c, #616161, #383838);
+    background-size: 1600% 1600%;
+    -webkit-animation: AnimationName 44s ease infinite;
+    -moz-animation: AnimationName 44s ease infinite;
+    -o-animation: AnimationName 44s ease infinite;
+    animation: AnimationName 44s ease infinite;
 }
+@-webkit-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+
+
+
+
+.jumbotron {
+  margin-bottom: 5rem;
+}
+
+// .background-timeline{
+//   background-image: url(/assets/smile.png);
+//   background-color:rgba(255,255,255,0.4);
+//   // background-blend-mode:lighten;
+//   // background-size: 100% 100%;
+//   // background-size: cover;
+//   // background-repeat: repeat;
+// }
+
+// .background-rank{
+//   background-image: url(/assets/star.png);
+//   background-color:rgba(255,255,255,0.4);
+// }
+
 
 // .header{
 //   padding: 0px 0px;
