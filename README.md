@@ -1,15 +1,15 @@
 # README
 
 ### 開発言語
-- Ruby3.0.1
-- Rails6.0.3  
+- Ruby2.7.5
+- Rails6.0.4.6  
 
 ### 使用技術
-- AWS EC2
+- Heroku
 - devise
 - Ajaxを使ったコメント機能
 - フォロー機能
-- お気に入り機能（like）
+- お気に入り機能（favorite）
 - rails-admin
 #### 指定外
 - 楽天ブックスAPI
@@ -30,7 +30,7 @@ https://docs.google.com/spreadsheets/d/1rIo6GrunzJVj8376pkBHeIxpyH32-kcIhj-7ACeP
 https://docs.google.com/spreadsheets/d/1rIo6GrunzJVj8376pkBHeIxpyH32-kcIhj-7ACeP-uc/edit?usp=sharing
 
 ### ER図
-![スクリーンショット 2022-02-03 15 51 30](https://user-images.githubusercontent.com/93339149/152295244-b9f7f4db-5f54-4b0d-a3f3-78e9a3f5b956.png)
+![スクリーンショット 2022-02-28 11 46 25](https://user-images.githubusercontent.com/93339149/155915833-e0cb988d-6c92-4ca3-9654-9ee293ce7b2d.png)
 
 
 ### 画面遷移図
