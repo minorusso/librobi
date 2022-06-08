@@ -48,6 +48,7 @@ class BooksController < ApplicationController
   
   private
   #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッドを設定していきます。
+  # result内のキャメル型の情報を通常のハッシュ型に戻す
   def read(result)
     title = result["title"]
     author = result["author"]

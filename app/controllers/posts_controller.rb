@@ -4,10 +4,11 @@ class PostsController < ApplicationController
     end
     def new
         @post = Post.new
+        # bookのshowページから遷移する際にパラメータで本の識別番号isbnを飛ばす
         results = RakutenWebService::Books::Book.search(isbn: params[:isbn])
         @book = Book.new(read(results.first))
     end
-
+        # 投稿ボタンが押されると
     def create
         @book = Book.find_or_initialize_by(isbn: params[:isbn])
         unless @book.persisted?
